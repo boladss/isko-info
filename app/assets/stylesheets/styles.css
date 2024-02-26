@@ -1,0 +1,123 @@
+:root {
+    --maroon: maroon;
+    --white-smoke: #FAF9F6;
+  }
+  
+  body {
+    font-family: "Roboto", sans-serif;
+    background-color: #FAF9F6; 
+  }
+  
+  
+  /* .component-6 {
+    padding: 0 0 0 0;
+  } */
+  
+  .logo {
+    margin: auto;
+    height: 25%;
+    width: 50%;
+    color: var(--maroon);
+    display: flex;
+    align-items: center;
+    text-align: center;
+    /* margin-bottom: 40px;
+    margin-left: 89px; */
+    font-family: Roboto;
+    font-size: 100px;
+    font-weight: 600;
+    line-height: var(--sf-pro-text-100-bold-line-height);
+  }
+  .about {
+    height: 29.68%;
+    color: var(--maroon);
+    align-self: stretch;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 39px;
+    /* font-family: var(--inter-20-regular-family); */
+    font-size: var(--inter-20-regular-size);
+    font-weight: var(--inter-20-regular-weight);
+    line-height: var(--inter-20-regular-line-height);
+  }
+  .flex-wrapper-one {
+    margin-bottom: 60px;
+    padding: 0 0 0 0;
+    display: flex;
+    align-items: flex-start;
+  }
+  .group-2 {
+    background-color: var(--maroon);
+    margin-right: 80px;
+    border-radius: 45px;
+    padding: 13px 15px 13px 14px;
+    display: flex;
+    align-items: center;
+  }
+  .group-1 {
+    background-color: var(--maroon);
+    border-radius: 45px;
+    padding: 11px 22px 12px;
+    display: flex;
+    align-items: center;
+  }
+  .group-3 {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+  }
+  .login {
+    color: var(--white-smoke);
+    flex: 1;
+    align-self: stretch;
+    background: transparent;
+    border: none;
+    text-decoration: none;
+    text-shadow: 0 4px 4px var(--transparent-black);
+    font-family: var(--inter-18-regular-family);
+    font-size: var(--inter-18-regular-size);
+    font-weight: var(--inter-18-regular-weight);
+    line-height: var(--inter-18-regular-line-height);
+  }
+  .signup {
+    width: 39.46%;
+    height: 5.48%;
+    color: var(--maroon);
+    text-decoration: underline;
+    background: transparent;
+    border: none;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin-left: 212px;
+    text-shadow: 0 4px 4px rgba(0,0,0,0.5);
+    font-family: var(--inter-20-regular-family);
+    font-size: var(--inter-20-regular-size);
+    font-weight: var(--inter-20-regular-weight);
+    line-height: var(--inter-20-regular-line-height);
+  }
+  
+  .oblation {
+    height: 50%;
+    width: 50%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    object-fit: cover;
+  }
+
+  .btn-transparent {
+    color: #FAF9F6; 
+    background: transparent;
+    border: none;
+}
+
+.center-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
