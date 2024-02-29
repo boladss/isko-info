@@ -7,7 +7,9 @@
     "lib": "lib",
     "test": "test"
   },
-  "scripts": {},
+  "scripts": {
+    "start": "rails server"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
