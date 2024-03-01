@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="signup.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap&effect=fire" rel="stylesheet">
+  </head>
+    <body>
+    <div class="signup-as-student-two">
+      <div class="group-4">
+        <p class="signup-as-student">SIGNUP</p>
+        <form id="signupForm" action="/home">
+          <div class="signup-name">
+            <input class="fullname" type="text" placeholder="Name" onkeydown="moveFocus(event, '.email')">
+          </div>
+          <div class="signup-email">
+            <input class="email" type="email" placeholder="Email" onkeydown="moveFocus(event, '.password')">
+          </div>
+          <div class="signup-password">
+            <input class="signup-password-input" type="password" placeholder="Password" onkeydown="moveFocus(event, '.retype-password')">
+          </div>
+          <div class="signup-retype-password">
+            <input class="retype-password" type="password" placeholder="Re-type Password" onkeydown="submitForm(event, '#signupForm')">
+          </div>
+          <input type="submit" value="Signup" style="display: none;">
+        </form>
+
+        <script>
+        function moveFocus(event, selector) {
+            if (event.key === 'Enter' && event.target.value !== '') {
+                event.preventDefault(); // Prevents form submission
+                document.querySelector(selector).focus();
+            }
+        }
+
+        function submitForm(event, selector) {
+            if (event.key === 'Enter' && event.target.value !== '') {
+                document.querySelector(selector).submit();
+            }
+        }
+        </script>
+
+        <div class="login-button">
+          <%# <p class="login">LOGIN</p> %>
+          <a href="/home" class="login">SIGNUP</a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
