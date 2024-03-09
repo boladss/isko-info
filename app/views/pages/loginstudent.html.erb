@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="login.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap&effect=fire" rel="stylesheet">
+  </head>
+    <body>
+        <div class="login-as-student-two">
+            <div class="group-4">
+                <p class="login-as-student">LOGIN AS STUDENT</p>
+                <%= form_with url: loginstudent_path, local: true, method: :post do |f|%>
+                    <div class="login-username">
+                        <%= f.email_field :email, type: "email", placeholder: "Email", class: "username", onkeydown: "moveFocus(event, '.password')" %>
+                    </div>
+                    <div class="login-password">
+                        <%= f.password_field :password, type: "password", placeholder: "Password", class: "password", onkeydown: "submitForm(event, '#loginForm')" %>
+                    </div>
+                        <div class="login-button">
+                            <%= f.submit "LOGIN", class: "login" %>
+                        </div>
+                <% end %>
+
+    <script>
+    function moveFocus(event, selector) {
+        if (event.key === 'Enter' && event.target.value !== '') {
+            event.preventDefault(); // Prevents form submission
+            document.querySelector(selector).focus();
+        }
+    }
+
+    function submitForm(event, selector) {
+        if (event.key === 'Enter' && event.target.value !== '') {
+            document.querySelector(selector).submit();
+        }
+    }
+    </script>
+                <%# <div class="login-button"> %>
+                <%# <a href="/home" class="login">LOGIN</a> %>
+                <%# </div> %>
+            </div>
+            </div>
+    </body>
+</html>

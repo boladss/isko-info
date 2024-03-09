@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <link href="signup.css" rel="stylesheet" type="text/css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap&effect=fire" rel="stylesheet">
+  </head>
+    <body>
+    <div class="signup-as-student-two">
+      <div class="group-4">
+        <p class="signup-as-student">SIGNUP</p>
+        <%= form_with url: signup_path, local: true, method: :post do |f|%>
+          <div class="signup-name">
+            <%= f.text_field :username, type: "text", placeholder: "Name", class: "fullname", onkeydown: "moveFocus(event, '.email')" %>
+          </div>
+          <div class="signup-email">
+            <%= f.email_field :email, type: "email", placeholder: "Email", class: "email", onkeydown: "moveFocus(event, '.signup-password-input')" %>
+          </div>
+          <div class="signup-password">
+            <%= f.password_field :password, type: "password", placeholder: "Password", class: "signup-password-input", onkeydown: "moveFocus(event, '.retype-password')" %>
+          </div>
+          <div class="signup-retype-password">
+            <%= f.password_field :password_confirmation, type: "password", placeholder: "Re-type Password", class: "retype-password", onkeydown: "submitForm(event, '#signupForm')" %>
+          </div>
+            <div class="login-button">
+                <%= f.submit "SIGNUP", class: "login" %>
+            </div>
+        <% end %>
+
+        <script>
+        function moveFocus(event, selector) {
+            if (event.key === 'Enter' && event.target.value !== '') {
+                event.preventDefault(); // Prevents form submission
+                document.querySelector(selector).focus();
+            }
+        }
+
+        function submitForm(event, selector) {
+            if (event.key === 'Enter' && event.target.value !== '') {
+                document.querySelector(selector).submit();
+            }
+        }
+        </script>
+
+        <%# <div class="login-button"> %>
+          <%# <p class="login">LOGIN</p> %>
+          <%# <a href="/home" class="login">SIGNUP</a> %>
+        <%# </div> %>
+      </div>
+    </div>
+  </body>
+</html>

@@ -78,6 +78,7 @@
     align-items: center;
     justify-content: center;
   }
+  
   .login {
     font-family: "Roboto", sans-serif;
     font-size: 24px;
@@ -91,4 +92,3 @@
     align-items: center;
     justify-content: center;
   }
-
