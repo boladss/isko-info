@@ -6,10 +6,12 @@ Rails.application.routes.draw do
   get "home", to: "pages#home"
   get '/logindept', to: "pages#logindept"
   get '/loginstudent', to: "pages#loginstudent"
+  get '/profilepage', to: "pages#profilepage"
   
   post '/logindept', to: "pages#logindept"
   post '/loginstudent', to: "pages#loginstudent"
   post '/logout', to: "pages#logout"
   post '/signup', to: "pages#signup"
+  post '/profilepage', to: "pages#profilepage"
   
 end
