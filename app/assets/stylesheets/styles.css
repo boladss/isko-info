@@ -88,6 +88,8 @@ h2.title {
   background-color: var(--maroon);
   border-radius: 45px;
   padding: 15px 30px;
+  border: none;
+  font-size: 12pt;
   text-align: center;
   text-decoration: none;
 }
@@ -95,6 +97,7 @@ h2.title {
 .login-button:hover {
   background-color: var(--light-maroon);
   transition: 0.3s;
+  cursor: pointer;
 }
 
 .signup {
@@ -137,12 +140,20 @@ h2.title {
   overflow: auto;
 }
 
-.sidebar a {
+.sidebar a, .sidebar button {
   display: block;
+  border: 0;
+  background-color: var(--maroon);
   color: var(--white-smoke);
   padding: 16pt;
   font-size: large;
   text-decoration: none;
+  text-align: left;
+}
+
+.sidebar button {
+  width: 100%;
+  cursor: pointer;
 }
 
 .sidebar a.active {
@@ -154,7 +165,7 @@ h2.title {
   text-underline-offset: 15%;
 }
 
-.sidebar a:hover:not(.active) {
+.sidebar a:hover:not(.active), .sidebar button:hover:not(.active) {
   background-color: var(--light-maroon);
   color: var(--white-smoke);
   transition: 0.2s;
@@ -177,6 +188,12 @@ h2.title {
   text-align: left;
 }
 
+#name {
+  max-width: calc(75% * var(--sidebar-width));
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 .profile-pic {
   height: 50px;
   width: 50px;
@@ -190,6 +207,7 @@ h2.title {
 }
 
 .content {
+  display: block;
   margin-left: var(--sidebar-width);
   padding: var(--margin-height) 10px;
   height: 100vh;
@@ -210,13 +228,11 @@ h2.title {
   margin: 20px 0 20px 0;
 }
 
-.form input {}
-
 .search {
   display: block;
   align-items: center;
   justify-content: flex-start;
-  width: 100%;
+  width: calc(100% - 30px);
   /* font-size: large;
   line-height: 3rem;
   border: 2px solid var(--transparent-black);

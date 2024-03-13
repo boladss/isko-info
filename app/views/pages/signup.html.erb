@@ -17,8 +17,8 @@
               <%= f.email_field :email, type: "email", placeholder: "Email", class: "email text-input", onkeydown: "moveFocus(event, '.signup-password-input')", id: "email" %>
               <%= f.password_field :password, type: "password", placeholder: "Password", class: "password text-input", onkeydown: "moveFocus(event, '.retype-password')" %>
               <%= f.password_field :password_confirmation, type: "password", placeholder: "Re-type Password", class: "retype-password text-input", onkeydown: "submitForm(event, '#signupForm')" %>  
-              <div class="button-wrapper-2">
-                <%= f.submit "SIGNUP", class: "login", id: "submit"%>
+              <div class="button-wrapper-2 center-content">
+                <%= f.submit "Sign up", class: "login-button", id: "submit"%>
               </div>
             </div>
         <% end %>

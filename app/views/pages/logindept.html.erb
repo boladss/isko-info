@@ -14,8 +14,8 @@
                     <div class="form">
                         <%= f.text_field :email, placeholder: "Email", class: "username text-input", onkeydown: "moveFocus(event, '.password')" %>
                         <%= f.password_field :password, type: "password", placeholder: "Password", class: "password text-input", onkeydown: "submitForm(event, '#loginForm')" %>
-                        <div class="button-wrapper-2">
-                            <%= f.submit "LOGIN", class: "login-button" %>
+                        <div class="button-wrapper-2 center-content">
+                            <%= f.submit "Log in", class: "login-button" %>
                         </div>
                         <%# <input class="username text-input" type="text" placeholder="Username" onkeydown="moveFocus(event, '.password')">
                         <input class="password text-input" type="password" placeholder="Password" onkeydown="submitForm(event, '#loginForm')">
