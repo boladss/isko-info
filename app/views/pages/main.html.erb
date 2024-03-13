@@ -1,22 +1,11 @@
 <%# <%= stylesheet_link_tag('styles') %> 
 <!DOCTYPE html>
 <html>
-  <head>
-    <link href="styles.css" rel="stylesheet" type="text/css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap&effect=fire" rel="stylesheet">
-  </head>
   <body>
-    <div class="component-6">
-      <%# <img
-        alt=""
-        class="oblation"
-        src="../../assets/images/oblation.png"
-      /> %>
-      <%= image_tag "oblation.png", class: "oblation" %>
-      <div class="group-3 center-content">
-        <h1 class="logo center-content">IskoInfo</h1>
+    <div class="page-wrapper">
+      <div class="center-wrapper">
+        <h1 class="title">IskoInfo</h1>
+
         <p class="about">
           IskoInfo is a comprehensive online platform that aims
           to streamline information from all University of the
@@ -24,27 +13,20 @@
           all social media posts, a UPD website masterlist and
           registration information dissemination.
         </p>
-        <div class="flex-wrapper-one">
-          <div class="group-2">
-            <%# <button type="button" class="login" href="/home">Login as Department</button> %>
-            <a href="/logindept" class="login">Login as Department</a>
 
-            <%# <p class="login">
-              Login as department
-            </p> %>
-          </div>
-          <div class="group-1">
-            <%# <button type="button" class="login" href="/home">Login as Student</button> %>
-            <a href="/loginstudent" class="login">Login as Student</a>
-
-          </div>
+        <!-- Update links to "/logindept", etc.-->
+        <div class="button-wrapper-1">
+          <a href="/loginstudent" class="login-button">Log in as Student</a>
+          <a href="/logindept" class="login-button">Log in as Department</a>
         </div>
-        <%# <button type="button" class="signup" href="/">No account yet? Sign up here</button> %>
-        <a href="/signup" class="signup">No account yet? Sign up here</a>
-        <%# <p class="signup">
-          No account yet? Sign up here
-        </p> %>
+
+        <div class="button-wrapper-2">
+          <a href="/signup" class="signup">No account yet? Sign up here</a>
+        </div>
       </div>
+
     </div>
+    <!-- Convert the ff. to ruby -->
+    <%= image_tag "oblation.png", class: "oblation" %>
   </body>
 </html>
