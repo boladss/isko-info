@@ -46,6 +46,12 @@
                     password: password,
                     uid: uid
                 });
+                let split_email = email.split('@');
+                let email_name = split_email[0]
+                let domain_name = split_email[1]
+                set(ref(db, 'user/emails/' + email_name),{
+                    domain_name: domain_name 
+                });
             }
 
             const dbRef = ref(db)
@@ -55,6 +61,11 @@
                     AddToDb(username, email, password, uid)
                 }
             })
+
+            document.addEventListener("DOMContentLoaded", function() {
+                console.log("<%= flash[:notice] %>");
+            });
+            
         </script>
     </body>
 </html>

@@ -25,6 +25,10 @@ const app = initializeApp(firebaseConfig);
 // Reference to Database
 const db = getDatabase(app);
 
+document.getElementById('username').addEventListener('keydown', function(event) {
+    moveFocus(event, '.email');
+});
+
 document.getElementById("submit").addEventListener('click', function(e){
 
     set(ref(db, 'user/' + document.getElementById("username").value),
