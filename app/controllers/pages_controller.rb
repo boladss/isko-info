@@ -11,12 +11,16 @@ class PagesController < ApplicationController
     def main
     end
 
+
     def signup
         password_confirmation = params[:password_confirmation]
         username = params[:username]
         email = params[:email]
         password = params[:password]
+        firebase_url = "https://isko-info-default-rtdb.asia-southeast1.firebasedatabase.app"
+        firebase = Firebase::Client.new(firebase_url)
         
+        uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=#{Rails.application.credentials.firebase_api_key}")
         if username && email && password && password_confirmation
             if username.length < 8
                 flash[:notice] = "Username is lee than 8 characters"
@@ -38,8 +42,30 @@ class PagesController < ApplicationController
                 flash[:notice] = "Please input an email" 
                 redirect_to "/signup"
                 return
+            else
+                firebase_response = firebase.get("user/users/" + username)
+                firebase_response_data = firebase_response.body
+
+                if firebase_response_data
+                    flash[:notice] = "Username exists!"
+                    redirect_to "/signup"
+                    return
+                end
+                
+                email_name = email.split('@')[0]
+                domain_name = email.split('@')[1]
+                firebase_response = firebase.get("user/emails/" + email_name)
+                firebase_response_data = firebase_response.body
+                if firebase_response_data
+                    if domain_name == firebase_response_data["domain_name"]
+                        flash[:notice] = "Email exists"
+                        redirect_to "/signup"
+                    return
+                    end
+                end
             end
         end
+        
 
         uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=#{Rails.application.credentials.firebase_api_key}")
         response = Net::HTTP.post_form(uri, "username": @username, "email": @email, "password": @password)
@@ -132,4 +158,6 @@ class PagesController < ApplicationController
     def authenticate_user
         redirect_to "/loginstudent", notice: "You must be logged in to access this page." unless current_user
     end
+
+    
 end
