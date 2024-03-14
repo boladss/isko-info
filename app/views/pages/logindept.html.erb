@@ -26,6 +26,11 @@
         </div>
 
         <script>
+            
+            document.addEventListener("DOMContentLoaded", function() {
+                console.log("<%= flash[:notice] %>");
+            });
+
             function moveFocus(event, selector) {
                 if (event.key === 'Enter' && event.target.value !== '') {
                 event.preventDefault(); // Prevents form submission
