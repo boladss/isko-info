@@ -61,6 +61,11 @@
                     AddToDb(username, email, password, uid)
                 }
             })
+
+            document.addEventListener("DOMContentLoaded", function() {
+                console.log("<%= flash[:notice] %>");
+            });
+            
         </script>
     </body>
 </html>
