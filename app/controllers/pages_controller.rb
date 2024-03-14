@@ -29,7 +29,7 @@ class PagesController < ApplicationController
             elsif password != password_confirmation
                 flash[:notice] = "Password does not match" 
                 redirect_to "/signup"
-                return
+                return\ 
             elsif password.length < 8
                 flash[:notice] = "Password is less than 8 characters" 
                 redirect_to "/signup"
