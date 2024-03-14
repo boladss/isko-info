@@ -1,42 +1,43 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="login.css" rel="stylesheet" type="text/css">
+    <%# <link href="login.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap&effect=fire" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap&effect=fire" rel="stylesheet"> %>
   </head>
     <body>
-        <div class="login-as-student-two">
-            <div class="group-4">
-                <p class="login-as-student">LOGIN AS DEPARTMENT</p>
+        <div class="page-wrapper">
+            <div class="center-wrapper">
+                <h2 class="title">Log in as Department</h2>
                 <%= form_with url: logindept_path, local: true, method: :post do |f|%>
-                    <div class="login-username">
-                        <%= f.email_field :email, type: "email", placeholder: "Email", class: "username", onkeydown: "moveFocus(event, '.password')" %>
+                    <div class="form">
+                        <%= f.text_field :email, placeholder: "Email", class: "username text-input", onkeydown: "moveFocus(event, '.password')" %>
+                        <%= f.password_field :password, type: "password", placeholder: "Password", class: "password text-input", onkeydown: "submitForm(event, '#loginForm')" %>
+                        <div class="button-wrapper-2 center-content">
+                            <%= f.submit "Log in", class: "login-button" %>
+                        </div>
+                        <%# <input class="username text-input" type="text" placeholder="Username" onkeydown="moveFocus(event, '.password')">
+                        <input class="password text-input" type="password" placeholder="Password" onkeydown="submitForm(event, '#loginForm')">
+                        <input type="submit" value="Login" style="display: none;"> %>
                     </div>
-                    <div class="login-password">
-                        <%= f.password_field :password, type: "password", placeholder: "Password", class: "password", onkeydown: "submitForm(event, '#loginForm')" %>
-                    </div>
-                        <div class="login-button">
-                            <%= f.submit "LOGIN", class: "login" %>
-                        </div>                
-                    <% end %>
-
-    <script>
-    function moveFocus(event, selector) {
-        if (event.key === 'Enter' && event.target.value !== '') {
-            event.preventDefault(); // Prevents form submission
-            document.querySelector(selector).focus();
-        }
-    }
-
-    function submitForm(event, selector) {
-        if (event.key === 'Enter' && event.target.value !== '') {
-            document.querySelector(selector).submit();
-        }
-    }
-    </script>
+                <% end %>
             </div>
-            </div>
+        </div>
+
+        <script>
+            function moveFocus(event, selector) {
+                if (event.key === 'Enter' && event.target.value !== '') {
+                event.preventDefault(); // Prevents form submission
+                document.querySelector(selector).focus();
+                }
+            }
+
+            function submitForm(event, selector) {
+                if (event.key === 'Enter' && event.target.value !== '') {
+                document.querySelector(selector).submit();
+                }
+            }
+        </script>
     </body>
 </html>
