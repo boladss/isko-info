@@ -12,6 +12,35 @@ class PagesController < ApplicationController
     end
 
     def signup
+        password_confirmation = params[:password_confirmation]
+        username = params[:username]
+        email = params[:email]
+        password = params[:password]
+        
+        if username && email && password && password_confirmation
+            if username.length < 8
+                flash[:notice] = "Username is lee than 8 characters"
+                redirect_to "/signup"
+                return
+            elsif !(!!(username =~ /^[a-zA-Z0-9]+$/))
+                flash[:notice] = "Alphanumeric Characters only"
+                redirect_to "/signup"
+                return
+            elsif password != password_confirmation
+                flash[:notice] = "Password does not match" 
+                redirect_to "/signup"
+                return
+            elsif password.length < 8
+                flash[:notice] = "Password is less than 8 characters" 
+                redirect_to "/signup"
+                return
+            elsif !!(email =~ /@/)
+                flash[:notice] = "Please input an email" 
+                redirect_to "/signup"
+                return
+            end
+        end
+
         uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=#{Rails.application.credentials.firebase_api_key}")
         response = Net::HTTP.post_form(uri, "username": @username, "email": @email, "password": @password)
         data = JSON.parse(response.body)
