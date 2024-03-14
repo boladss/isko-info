@@ -20,7 +20,7 @@ class PagesController < ApplicationController
         session[:email] = @email
         session[:password] = @password
         session[:data] = data
-        redirect_to "/profilepage", notice: "You have successfully signed up!" if response.is_a?(Net::HTTPSuccess)
+        redirect_to home_path, notice: "You have successfully signed up!" if response.is_a?(Net::HTTPSuccess)
         # redirect_to_signup_path, alert: "There was an error signing up. Please try again." if response.is_a?(Net::HTTPClientError)
     end
         
@@ -32,7 +32,7 @@ class PagesController < ApplicationController
         if response.is_a?(Net::HTTPSuccess)
             session[:user_id] = data["localId"]
             session[:data] = data
-            redirect_to "/profilepage", notice: "You have successfully logged in!"
+            redirect_to home_path, notice: "You have successfully logged in!"
         end
     end
 
