@@ -18,7 +18,7 @@
               <%= f.password_field :password, type: "password", placeholder: "Password", class: "password text-input", onkeydown: "moveFocus(event, '.retype-password')" %>
               <%= f.password_field :password_confirmation, type: "password", placeholder: "Re-type Password", class: "retype-password text-input", onkeydown: "submitForm(event, '#signupForm')" %>  
               <div class="button-wrapper-2 center-content">
-                <%= f.submit "Sign up", class: "login-button", id: "submit"%>
+                <%= f.submit "Sign up", class: "login-button", onclick: "submitFunction(event)", id: "submit"%>
               </div>
             </div>
         <% end %>
