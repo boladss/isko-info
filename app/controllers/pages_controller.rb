@@ -67,7 +67,7 @@ class PagesController < ApplicationController
             session[:email] = email
             session[:user_id] = data["localId"]
             session[:data] = data
-            redirect_to "/profilepage", notice: "You have successfully logged in!"
+            redirect_to home_path, notice: "You have successfully logged in!"
         elsif email
             firebase_response = firebase.get("user/users/" + email)
             firebase_response_data = firebase_response.body
@@ -78,7 +78,7 @@ class PagesController < ApplicationController
                 session[:email] = email
                 session[:user_id] = data["localId"]
                 session[:data] = data
-                redirect_to "/profilepage", notice: "You have successfully logged in!"
+                redirect_to home_path, notice: "You have successfully logged in!"
             end
         end
           # Now you can use `user_data` to access the fetched user data
