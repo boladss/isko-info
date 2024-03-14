@@ -103,33 +103,36 @@ class PagesController < ApplicationController
         password = params[:password];
         firebase_url = "https://isko-info-default-rtdb.asia-southeast1.firebasedatabase.app"
         firebase = Firebase::Client.new(firebase_url)
-        
-        uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=#{Rails.application.credentials.firebase_api_key}")
-        response = Net::HTTP.post_form(uri, "email": email, "password": password)
-        data = JSON.parse(response.body)
-        if response.is_a?(Net::HTTPSuccess) 
-            session[:email] = email
-            session[:user_id] = data["localId"]
-            session[:data] = data
-            flash[:notice] = "You have successfully logged in!"
-            redirect_to "/profilepage"
-        elsif email
+        if email
             firebase_response = firebase.get("user/users/" + email)
             firebase_response_data = firebase_response.body
-            email = firebase_response_data["email"]
+            
+            uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=#{Rails.application.credentials.firebase_api_key}")
             response = Net::HTTP.post_form(uri, "email": email, "password": password)
             data = JSON.parse(response.body)
-            if response.is_a?(Net::HTTPSuccess)
+            if response.is_a?(Net::HTTPSuccess) 
                 session[:email] = email
                 session[:user_id] = data["localId"]
                 session[:data] = data
                 flash[:notice] = "You have successfully logged in!"
                 redirect_to "/profilepage"
-            else
-                flash[:notice] = "Invalid email or password"
-                redirect_to "/logindept"
+            elsif firebase_response_data
+                email = firebase_response_data["email"]
+                response = Net::HTTP.post_form(uri, "email": email, "password": password)
+                data = JSON.parse(response.body)
+                if response.is_a?(Net::HTTPSuccess)
+                    session[:email] = email
+                    session[:user_id] = data["localId"]
+                    session[:data] = data
+                    flash[:notice] = "You have successfully logged in!"
+                    redirect_to "/profilepage"
+                else
+                    flash[:notice] = "Invalid email or password"
+                    redirect_to "/logindept"
+                end
             end
         end
+          # Now you can use `user_data` to access the fetched user data
     end
 
     def loginstudent
@@ -138,31 +141,33 @@ class PagesController < ApplicationController
         password = params[:password];
         firebase_url = "https://isko-info-default-rtdb.asia-southeast1.firebasedatabase.app"
         firebase = Firebase::Client.new(firebase_url)
-        
-        uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=#{Rails.application.credentials.firebase_api_key}")
-        response = Net::HTTP.post_form(uri, "email": email, "password": password)
-        data = JSON.parse(response.body)
-        if response.is_a?(Net::HTTPSuccess) 
-            session[:email] = email
-            session[:user_id] = data["localId"]
-            session[:data] = data
-            flash[:notice] = "You have successfully logged in!"
-            redirect_to "/profilepage"
-        elsif email
+        if email
             firebase_response = firebase.get("user/users/" + email)
             firebase_response_data = firebase_response.body
-            email = firebase_response_data["email"]
+            
+            uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=#{Rails.application.credentials.firebase_api_key}")
             response = Net::HTTP.post_form(uri, "email": email, "password": password)
             data = JSON.parse(response.body)
-            if response.is_a?(Net::HTTPSuccess)
+            if response.is_a?(Net::HTTPSuccess) 
                 session[:email] = email
                 session[:user_id] = data["localId"]
                 session[:data] = data
                 flash[:notice] = "You have successfully logged in!"
                 redirect_to "/profilepage"
-            else
-                flash[:notice] = "Invalid email or password"
-                redirect_to "/loginstudent"
+            elsif firebase_response_data
+                email = firebase_response_data["email"]
+                response = Net::HTTP.post_form(uri, "email": email, "password": password)
+                data = JSON.parse(response.body)
+                if response.is_a?(Net::HTTPSuccess)
+                    session[:email] = email
+                    session[:user_id] = data["localId"]
+                    session[:data] = data
+                    flash[:notice] = "You have successfully logged in!"
+                    redirect_to "/profilepage"
+                else
+                    flash[:notice] = "Invalid email or password"
+                    redirect_to "/loginstudent"
+                end
             end
         end
           # Now you can use `user_data` to access the fetched user data

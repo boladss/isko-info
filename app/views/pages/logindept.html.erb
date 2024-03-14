@@ -24,7 +24,7 @@
                 <% end %>
             </div>
         </div>
-
+        <% if flash[:notice].present? %>
         <script>
             
             document.addEventListener("DOMContentLoaded", function() {
@@ -44,5 +44,6 @@
                 }
             }
         </script>
+         <% end %> 
     </body>
 </html>

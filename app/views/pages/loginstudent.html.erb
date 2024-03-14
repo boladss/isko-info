@@ -24,12 +24,16 @@
                 <% end %>
             </div>
         </div>
-
+        <% if flash[:notice].present? %>
+        
         <script>
 
             document.addEventListener("DOMContentLoaded", function() {
                 console.log("<%= flash[:notice] %>");
             });
+        </script>
+        <% end %>
+        <script>
             
             function moveFocus(event, selector) {
                 if (event.key === 'Enter' && event.target.value !== '') {
@@ -43,6 +47,8 @@
                 document.querySelector(selector).submit();
                 }
             }
+            
         </script>
+         
     </body>
 </html>
