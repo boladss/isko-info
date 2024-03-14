@@ -22,20 +22,20 @@
                         <input type="submit" value="Login" style="display: none;"> %>
                     </div>
                 <% end %>
+                <p id="warning"></p>
             </div>
         </div>
-        <% if flash[:notice].present? %>
-        
-        <script>
 
+        <!--Send warning message for invalid credentials-->
+        <% if flash[:notice].present? %>
+        <script>
             document.addEventListener("DOMContentLoaded", function() {
-                document.getElementById("text").placeholder = "<%= j flash[:notice] %>"
+                document.getElementById("warning").innerHTML = "<%= j flash[:notice] %>"
             });
         </script>
         <% end %>
         
-        <script>
-            
+        <script>  
             function moveFocus(event, selector) {
                 if (event.key === 'Enter' && event.target.value !== '') {
                 event.preventDefault(); // Prevents form submission
@@ -48,7 +48,6 @@
                 document.querySelector(selector).submit();
                 }
             }
-            
         </script>
          
     </body>
