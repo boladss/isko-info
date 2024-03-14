@@ -12,7 +12,7 @@
                 <h2 class="title">Log in as Student</h2>
                 <%= form_with url: loginstudent_path, local: true, method: :post do |f|%>
                     <div class="form">
-                        <%= f.text_field :email, placeholder: "Email or username", class: "username text-input", onkeydown: "moveFocus(event, '.password')" %>
+                        <%= f.text_field :email, placeholder: "Email or username", class: "username text-input", onkeydown: "moveFocus(event, '.password')", id: "text" %>
                         <%= f.password_field :password, type: "password", placeholder: "Password", class: "password text-input", onkeydown: "submitForm(event, '#loginForm')" %>
                         <div class="button-wrapper-2 center-content">
                             <%= f.submit "Log in", class: "login-button" %>
@@ -29,10 +29,11 @@
         <script>
 
             document.addEventListener("DOMContentLoaded", function() {
-                console.log("<%= flash[:notice] %>");
+                document.getElementById("text").placeholder = "<%= j flash[:notice] %>"
             });
         </script>
         <% end %>
+        
         <script>
             
             function moveFocus(event, selector) {

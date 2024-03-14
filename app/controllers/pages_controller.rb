@@ -98,7 +98,6 @@ class PagesController < ApplicationController
     end
 
     def logindept
-        username = params[:username]
         email = params[:email];
         password = params[:password];
         firebase_url = "https://isko-info-default-rtdb.asia-southeast1.firebasedatabase.app"
@@ -130,13 +129,15 @@ class PagesController < ApplicationController
                     flash[:notice] = "Invalid email or password"
                     redirect_to "/logindept"
                 end
+            else
+                flash[:notice] = "Unregistered username"
+                redirect_to "/loginstudent"
             end
         end
           # Now you can use `user_data` to access the fetched user data
     end
 
     def loginstudent
-        username = params[:username]
         email = params[:email];
         password = params[:password];
         firebase_url = "https://isko-info-default-rtdb.asia-southeast1.firebasedatabase.app"
@@ -168,6 +169,9 @@ class PagesController < ApplicationController
                     flash[:notice] = "Invalid email or password"
                     redirect_to "/loginstudent"
                 end
+            else
+                flash[:notice] = "Unregistered username"
+                redirect_to "/loginstudent"
             end
         end
           # Now you can use `user_data` to access the fetched user data
