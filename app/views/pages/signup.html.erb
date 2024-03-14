@@ -1,83 +1,78 @@
+
 <!DOCTYPE html>
 <html>
   <head>
-    <link href="signup.css" rel="stylesheet" type="text/css">
+    <%# <link href="signup.css" rel="stylesheet" type="text/css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap&effect=fire" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap&effect=fire" rel="stylesheet"> %>
   </head>
-    <body>
-    <div class="signup-as-student-two">
-      <div class="group-4" id = "signup-form">
-
-        <p class="signup-as-student">SIGNUP</p>
+  <body>
+    <div class="page-wrapper">
+      <div class="center-wrapper">
+        <h2 class="title">Sign up as Student</h2>
         <%= form_with url: signup_path, local: true, method: :post do |f|%>
-
-          <div class="signup-name">
-            <%= f.text_field :username, type: "text", placeholder: "Name", class: "fullname", id: "username"  %>
-          </div>
-
-          <div class="signup-email">
-            <%= f.email_field :email, type: "email", placeholder: "Email", class: "email", id: "email" %>
-          </div>
-
-          <div class="signup-password">
-            <%= f.password_field :password, id: "password", type: "password", placeholder: "Password", class: "signup-password-input" %>
-          </div>
-
-          <div class="signup-retype-password">
-            <%= f.password_field :password_confirmation, id: "password_confirmation", type: "password", placeholder: "Re-type Password", class: "retype-password" %>
-          </div>
-          
-          <p class="signup-as-student" id = "message"></p>
-
-          <div class="login-button">
-              <%= f.submit "SIGNUP", class: "login", id: "submit", onclick: "submitFunction(event)", type: "button" %>
-          </div>
-
+            <div class="form">
+              <%= f.text_field :username, type: "text", placeholder: "Name", class: "fullname text-input", onkeydown: "moveFocus(event, '.email')", id: "username"  %>
+              <%= f.email_field :email, type: "email", placeholder: "Email", class: "email text-input", onkeydown: "moveFocus(event, '.signup-password-input')", id: "email" %>
+              <%= f.password_field :password, type: "password", placeholder: "Password", class: "password text-input", onkeydown: "moveFocus(event, '.retype-password')" %>
+              <%= f.password_field :password_confirmation, type: "password", placeholder: "Re-type Password", class: "retype-password text-input", onkeydown: "submitForm(event, '#signupForm')" %>  
+              <div class="button-wrapper-2 center-content">
+                <%= f.submit "Sign up", class: "login-button", id: "submit"%>
+              </div>
+            </div>
         <% end %>
-      </div>
     </div>
 
-  <script type="module">
+    <script type="module">
+      function moveFocus(event, selector) {
+        if (event.key === 'Enter' && event.target.value !== '') {
+          event.preventDefault(); // Prevents form submission
+          document.querySelector(selector).focus();
+        }
+      }
 
-    function isAlphanumeric(str) {
-      return /^[a-zA-Z0-9]+$/.test(str);
-    }
-    
-    window.submitFunction = function(event) {
+      function submitForm(event, selector) {
+        if (event.key === 'Enter' && event.target.value !== '') {
+          document.querySelector(selector).submit();
+        }
+      }
 
-      event.preventDefault();
+      function isAlphanumeric(str) {
+        return /^[a-zA-Z0-9]+$/.test(str);
+      }
       
-      const username = document.getElementById("username").value;
-      const email = document.getElementById("email").value;
-      const password = document.getElementById("password").value;
-      const password_confirmation = document.getElementById("password_confirmation").value;
+      window.submitFunction = function(event) {
 
-      if (username === "" || email === "" || password === "" || password_confirmation === "") {
-        alert("Please complete all fields.");
-        return;
+        event.preventDefault();
+        
+        const username = document.getElementById("username").value;
+        const email = document.getElementById("email").value;
+        const password = document.getElementById("password").value;
+        const password_confirmation = document.getElementById("password_confirmation").value;
+
+        if (username === "" || email === "" || password === "" || password_confirmation === "") {
+          alert("Please complete all fields.");
+          return;
+        }
+
+        if (!isAlphanumeric(username)) {
+          alert("Invalid username. Please make sure the username contains only letters and numbers.");
+          return;
+        }
+
+        if (password.length < 8) {
+          alert("Password must be 8 characters or more.");
+          return;
+        }
+
+        if (password !== password_confirmation) {
+          alert("Passwords do not match.");
+          return;
+        }
+
+        alert("Form successful!");
       }
-
-      if (!isAlphanumeric(username)) {
-        alert("Invalid username. Please make sure the username contains only letters and numbers.");
-        return;
-      }
-
-      if (password.length < 8) {
-        alert("Password must be 8 characters or more.");
-        return;
-      }
-
-      if (password !== password_confirmation) {
-        alert("Passwords do not match.");
-        return;
-      }
-
-      alert("Form successful!");
-
-    }
-          
-  </script>
+    </script>
   </body>
 </html>
