@@ -22,8 +22,8 @@ class PagesController < ApplicationController
         
         uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=#{Rails.application.credentials.firebase_api_key}")
         if username && email && password && password_confirmation
-            if username.length < 8
-                flash[:notice] = "Username is lee than 8 characters"
+            if username.length < 8 || username.length > 21
+                flash[:notice] = "Username should be between 8 and 21 characters"
                 redirect_to "/signup"
                 return
             elsif !(!!(username =~ /^[a-zA-Z0-9]+$/))
@@ -34,8 +34,8 @@ class PagesController < ApplicationController
                 flash[:notice] = "Password does not match" 
                 redirect_to "/signup"
                 return
-            elsif password.length < 8
-                flash[:notice] = "Password is less than 8 characters" 
+            elsif password.length < 8 || password.length > 21
+                flash[:notice] = "Password should be between 8 and 21 characters" 
                 redirect_to "/signup"
                 return
             elsif !(email.include?("@"))
