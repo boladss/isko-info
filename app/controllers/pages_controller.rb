@@ -23,23 +23,23 @@ class PagesController < ApplicationController
         uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=#{Rails.application.credentials.firebase_api_key}")
         if username && email && password && password_confirmation
             if username.length < 8
-                flash[:notice] = "Username is lee than 8 characters"
+                flash[:notice] = "Username should be at least 8 characters long."
                 redirect_to "/signup"
                 return
             elsif !(!!(username =~ /^[a-zA-Z0-9]+$/))
-                flash[:notice] = "Alphanumeric Characters only"
+                flash[:notice] = "Username must only consist of alphanumeric characters (A-Z, 0-9)."
                 redirect_to "/signup"
                 return
             elsif password != password_confirmation
-                flash[:notice] = "Password does not match" 
+                flash[:notice] = "Passwords do not match." 
                 redirect_to "/signup"
                 return
             elsif password.length < 8
-                flash[:notice] = "Password is less than 8 characters" 
+                flash[:notice] = "Password should be at least 8 characters long." 
                 redirect_to "/signup"
                 return
             elsif !(email.include?("@"))
-                flash[:notice] = "Please input an email" 
+                flash[:notice] = "Please include an email." 
                 redirect_to "/signup"
                 return
             else
@@ -47,7 +47,7 @@ class PagesController < ApplicationController
                 firebase_response_data = firebase_response.body
 
                 if firebase_response_data
-                    flash[:notice] = "Username exists!"
+                    flash[:notice] = "Username already exists."
                     redirect_to "/signup"
                     return
                 end
@@ -58,7 +58,7 @@ class PagesController < ApplicationController
                 firebase_response_data = firebase_response.body
                 if firebase_response_data
                     if domain_name == firebase_response_data["domain_name"]
-                        flash[:notice] = "Email exists"
+                        flash[:notice] = "Email has already been used."
                         redirect_to "/signup"
                     return
                     end
@@ -126,11 +126,11 @@ class PagesController < ApplicationController
                     flash[:notice] = "You have successfully logged in!"
                     redirect_to "/profilepage"
                 else
-                    flash[:notice] = "Invalid email or password"
+                    flash[:notice] = "Invalid email or password."
                     redirect_to "/logindept"
                 end
             else
-                flash[:notice] = "Unregistered username"
+                flash[:notice] = "This username is not registered. Please contact the developers to request for an account."
                 redirect_to "/loginstudent"
             end
         end
@@ -166,11 +166,11 @@ class PagesController < ApplicationController
                     flash[:notice] = "You have successfully logged in!"
                     redirect_to "/profilepage"
                 else
-                    flash[:notice] = "Invalid email or password"
+                    flash[:notice] = "Invalid email or password."
                     redirect_to "/loginstudent"
                 end
             else
-                flash[:notice] = "Unregistered username"
+                flash[:notice] = "This username is not registered. Please sign up first."
                 redirect_to "/loginstudent"
             end
         end
