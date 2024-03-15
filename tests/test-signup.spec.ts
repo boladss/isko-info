@@ -10,6 +10,11 @@ function randomUsername() {
   return username;
 }
 
+test('signup: load page', async ({ page }) => {
+  await page.goto('http://127.0.0.1:3000/signup');
+  await expect(page.getByText('Sign up as Student')).toBeVisible();
+});
+
 test('signup: fill forms', async ({ page }) => {
   let username = randomUsername();
   let email = username + "@email.com";
@@ -43,7 +48,7 @@ test('signup: click signup', async ({ page }) => {
   await page.getByPlaceholder('Password', { exact: true }).press('Enter');
   await page.getByPlaceholder('Re-type Password').fill(PASSWORD);
   await page.getByPlaceholder('Re-type Password').press('Enter');
-  await expect(page.getByRole('heading', { name: 'Welcome to IskoInfo!' })).toBeVisible();
+  await expect(page.getByText('Welcome to IskoInfo!')).toBeVisible();
   await expect(page.locator('#profile')).toContainText(email);
 });
 

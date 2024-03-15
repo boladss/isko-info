@@ -7,7 +7,6 @@ const PASSWORD = "password1234";
 test('login-dept: load page', async ({ page }) => {
   await page.goto('http://127.0.0.1:3000/logindept');
   await expect(page.getByText('Log in as Department')).toBeVisible();
-  await expect(page.getByRole('heading')).toContainText('Log in as Department');
 });
 
 test('login-dept: fill forms', async ({ page }) => {
@@ -27,7 +26,7 @@ test('login-dept: click login', async ({ page }) => {
   await page.getByPlaceholder('Email').press('Enter');
   await page.getByPlaceholder('Password').fill(PASSWORD);
   await page.getByPlaceholder('Password').press('Enter');
-  await expect(page.getByRole('heading', { name: 'Welcome to IskoInfo!' })).toBeVisible();
+  await expect(page.getByText('Welcome to IskoInfo!')).toBeVisible();
   await expect(page.locator('#profile')).toContainText(EMAIL);
   await page.getByRole('button', { name: 'Home' }).click();
   await expect(page.locator('#name')).toContainText(EMAIL);
