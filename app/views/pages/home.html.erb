@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="sidebar">
+      <div class="mini-profile center-content">
+        <%# <img src="default.png" class="profile-pic"></img> %>
+        <%= image_tag "default.png", class: "profile-pic" %>
+        <h1 id="name"><%= session[:data]["email"]%></h1>
+        <!-- <h1>José Protacio Rizal Mercado y Alonso Realonda</h1> -->
+      </div>
+
+      <hr class="divider"/>
+
+      <div class="links">
+        <!-- Convert into correct links -->
+        <span><a href="/home" class="active">Dashboard</a></span>
+        <span><a href="/home">My Favorites</a></span>
+        <span><a href="/home">Registration Helper</a></span>
+        <span><a href="/home">Website Masterlist</a></span>
+        <span><a href="/home">User Preferences</a></span>
+        <%# <span><a href="index.html">Log out</a></span> %>
+        <span><%= button_to "Logout", logout_path%></span>
+      </div>
+    </div>
+    <div class="content">
+      <input class="text-input search" type="text" placeholder="Search (e.g., Computer Science)">
+    </div>
+  </body>
+</html>
+

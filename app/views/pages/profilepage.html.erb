@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="page-wrapper" id="profile" uid="<%= session[:user_id] %>" username="<%= session[:username] %>" email="<%=session[:email]%>">
+            <div class="center-wrapper">
+                <h2 class="title">Welcome to IskoInfo!</h2>
+                <p><b>Current User:</b> <%=  session[:email]%></p>
+                <div class="button-wrapper-1">
+                    <%= button_to "Home", home_path, class:"login-button"%>
+                    <%= button_to "Log out", logout_path, class:"login-button"%>
+                </div>
+            </div>
+        </div>
+
+        <p id="demo"></p>
+
+        <script type = "module">
+            
+            import { initializeApp } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-app.js";
+            import { getDatabase, ref, set, get, child, update, remove, push } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-database.js";
+            import { getAuth, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-auth.js";
+            const firebaseConfig = {
+            apiKey: "AIzaSyBEZUkQ7wgyaaBu0EEoBDY8CG0bMsuyOkc",
+            authDomain: "isko-info.firebaseapp.com",
+            databaseURL: "https://isko-info-default-rtdb.asia-southeast1.firebasedatabase.app",
+            projectId: "isko-info",
+            storageBucket: "isko-info.appspot.com",
+            messagingSenderId: "1034226646649",
+            appId: "1:1034226646649:web:927171023d6ae34698dea8"
+            };
+            const app = initializeApp(firebaseConfig);
+
+            // Reference to Database
+            const db = getDatabase(app)
+            var uid = document.getElementById("profile").getAttribute("uid");
+            var username = document.getElementById("profile").getAttribute("username");
+            var email = document.getElementById("profile").getAttribute("email");
+            var password = document.getElementById("profile").getAttribute("password");
+            console.log(uid)
+
+            // add users to db
+            function AddToDb(username, email, password, uid){
+                set(ref(db, 'user/users/' + username), {
+                    username: username,
+                    email: email,
+                    password: password,
+                    uid: uid
+                });
+                let split_email = email.split('@');
+                let email_name = split_email[0]
+                let domain_name = split_email[1]
+                set(ref(db, 'user/emails/' + email_name),{
+                    domain_name: domain_name 
+                });
+            }
+
+            const dbRef = ref(db)
+
+            get(child(dbRef, 'user/users/'+ username)).then((snapshot) => {
+                if (!(snapshot.exists())) {
+                    AddToDb(username, email, password, uid)
+                }
+            })
+
+            document.addEventListener("DOMContentLoaded", function() {
+                console.log("<%= flash[:notice] %>");
+            });
+            
+        </script>
+    </body>
+</html>
+

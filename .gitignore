@@ -38,3 +38,6 @@ node_modules/
 /playwright-report/
 /blob-report/
 /playwright/.cache/
+
+/config/master.key
+config/credentials.yml.enc
