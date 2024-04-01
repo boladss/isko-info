@@ -1,10 +1,6 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <%# <link href="login.css" rel="stylesheet" type="text/css">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap&effect=fire" rel="stylesheet"> %>
   </head>
     <body>
         <div class="page-wrapper">
@@ -17,9 +13,6 @@
                         <div class="button-wrapper-2 center-content">
                             <%= f.submit "Log in", class: "login-button" %>
                         </div>
-                        <%# <input class="username text-input" type="text" placeholder="Username" onkeydown="moveFocus(event, '.password')">
-                        <input class="password text-input" type="password" placeholder="Password" onkeydown="submitForm(event, '#loginForm')">
-                        <input type="submit" value="Login" style="display: none;"> %>
                     </div>
                 <% end %>
                 <p id="warning"></p>

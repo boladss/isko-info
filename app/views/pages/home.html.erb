@@ -3,7 +3,6 @@
   <body>
     <div class="sidebar">
       <div class="mini-profile">
-        <%# <img src="default.png" class="profile-pic"></img> %>
         <%= image_tag "default.png", class: "profile-pic" %>
         <h1 id="name"><%= session[:data]["email"]%></h1>
         <!-- <h1>José Protacio Rizal Mercado y Alonso Realonda</h1> -->
@@ -18,7 +17,6 @@
         <span><a href="/home" class="sb-link">Registration Helper</a></span>
         <span><a href="/home" class="sb-link">Website Masterlist</a></span>
         <span><a href="/home" class="sb-link">User Preferences</a></span>
-        <%# <span><a href="index.html">Log out</a></span> %>
         <span><%= button_to "Logout", logout_path, class: "sb-link"%></span>
       </div>
     </div>
