@@ -115,6 +115,9 @@ class PagesController < ApplicationController
                 session[:data] = data
                 flash[:notice] = "You have successfully logged in!"
                 redirect_to "/profilepage"
+            elsif !(email.include?("@")) && email.length < 8
+                flash[:notice] = "Invalid email or password."
+                redirect_to "/logindept"
             elsif firebase_response_data
                 email = firebase_response_data["email"]
                 response = Net::HTTP.post_form(uri, "email": email, "password": password)
@@ -131,7 +134,7 @@ class PagesController < ApplicationController
                 end
             else
                 flash[:notice] = "This username is not registered. Please contact the developers to request for an account."
-                redirect_to "/loginstudent"
+                redirect_to "/logindept"
             end
         end
           # Now you can use `user_data` to access the fetched user data
@@ -155,6 +158,9 @@ class PagesController < ApplicationController
                 session[:data] = data
                 flash[:notice] = "You have successfully logged in!"
                 redirect_to "/profilepage"
+            elsif !(email.include?("@")) && email.length < 8
+                flash[:notice] = "Invalid email or password."
+                redirect_to "/loginstudent"
             elsif firebase_response_data
                 email = firebase_response_data["email"]
                 response = Net::HTTP.post_form(uri, "email": email, "password": password)
