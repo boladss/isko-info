@@ -1,0 +1,84 @@
+.center-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.title {
+  color: var(--maroon);
+  font-size: 100px;
+  font-weight: bold;
+  margin: 0 auto;
+  /* margin-top: 10px; */
+  /* margin-bottom: 20px; */
+}
+
+h2.title {
+  font-size: 50px;
+}
+
+.about {
+  color: var(--maroon);
+  font-size: 14pt;
+  padding: 0 20%;
+  flex: 1;
+  text-align: center;
+}
+
+.button-wrapper-1 {
+  display: flex;
+  width: auto;
+  padding: 0;
+  flex: 1;
+  flex-direction: row;
+  column-gap: 50px;
+  margin-top: 30px;
+  margin-bottom: 50px;
+  overflow: wrap;
+}
+
+.button-wrapper-2 {
+  display: flex;
+  width: auto;
+  padding: 0;
+  margin: 10px;
+}
+
+.login-button {
+  color: var(--white-smoke);
+  background-color: var(--maroon);
+  border-radius: 45px;
+  padding: 15px 30px;
+  border: none;
+  font-size: 12pt;
+  text-align: center;
+  text-decoration: none;
+}
+
+.login-button:hover {
+  background-color: var(--light-maroon);
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+.signup {
+  color: var(--maroon);
+  text-shadow: 0 3px 3px var(--transparent-black);
+}
+
+.signup:hover {
+  color: var(--light-maroon);
+  transition: 0.3s;
+}
+
+.oblation {
+  max-width: 80%;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  object-fit: cover;
+  align-self: flex-end;
+  z-index: -100;
+}
+

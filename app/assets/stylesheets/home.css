@@ -1,0 +1,108 @@
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: var(--sidebar-width);
+  background-color: var(--maroon);
+  position: fixed;
+  left: 0;
+  height: 100%;
+  overflow: auto;
+}
+
+.sidebar a, .sidebar button {
+  display: block;
+  border: 0;
+  background-color: var(--maroon);
+  color: var(--white-smoke);
+  padding: 16pt;
+  font-size: large;
+  text-decoration: none;
+  text-align: left;
+}
+
+.sidebar button {
+  width: 100%;
+  cursor: pointer;
+}
+
+.sidebar a.active {
+  background-color: var(--dark-maroon);
+  color: var(--white-smoke);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 0.05rem;
+  text-underline-offset: 15%;
+}
+
+.sidebar a:hover:not(.active), .sidebar button:hover:not(.active) {
+  background-color: var(--light-maroon);
+  color: var(--white-smoke);
+  transition: 0.2s;
+}
+
+.mini-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  margin: var(--margin-height) 10px var(--margin-height) 10px;
+}
+
+.mini-profile h1 {
+  display: block;
+  color: var(--white-smoke);
+  margin: 0;
+  padding: 15px;
+  text-decoration: none;
+  font-size: large;
+  text-align: left;
+}
+
+#name {
+  max-width: calc(75% * var(--sidebar-width));
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-pic {
+  height: 50px;
+  width: 50px;
+}
+
+.divider {
+  background-color: var(--white-smoke);
+  position: relative;
+  height: 3px;
+  margin: 0;
+}
+
+.content {
+  display: block;
+  margin-left: var(--sidebar-width);
+  padding: var(--margin-height) 10px;
+  height: 100vh;
+}
+
+.search {
+  display: block;
+  align-items: center;
+  justify-content: flex-start;
+  width: calc(100% - 30px);
+  /* font-size: large;
+  line-height: 3rem;
+  border: 2px solid var(--transparent-black);
+  border-radius: 15px; */
+}
+
+@media screen and (max-width: 700px) {
+  /* LANDING PAGE */
+  .about {padding: 0 10%;}
+
+  /* HOME PAGE */
+  .sidebar {
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+  .sidebar a {float: left;}
+  .content {margin-left: 0;}
+}
