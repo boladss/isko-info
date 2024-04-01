@@ -1,5 +1,11 @@
 Rails.application.routes.draw do
   
+  # NOTE FOR DEVELOPERS:
+  # get - just retrieves data (i.e., any "normal" page link)
+  # post - sends data to server for processing (i.e., submitting filled forms)
+  
+  # TL;DR: Only use post when necessary, not for linking.
+
   root to: "pages#main"
   get '/', to: "pages#main"
   get '/signup', to: "pages#signup"
@@ -8,7 +14,7 @@ Rails.application.routes.draw do
   get '/loginstudent', to: "pages#loginstudent"
   get '/profilepage', to: "pages#profilepage"
   
-  post "/home", to: "pages#home"
+  # post "/home", to: "pages#home"
   post '/logindept', to: "pages#logindept"
   post '/loginstudent', to: "pages#loginstudent"
   post '/logout', to: "pages#logout"
