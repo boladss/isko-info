@@ -29,7 +29,7 @@ h2.title {
 .button-wrapper-1 {
   display: flex;
   width: auto;
-  padding: 0;
+  padding: 0 20pt;
   flex: 1;
   flex-direction: row;
   column-gap: 50px;
@@ -82,3 +82,6 @@ h2.title {
   z-index: -100;
 }
 
+@media screen and (max-width: 700px) {
+  .about {padding: 0 10%;}
+}

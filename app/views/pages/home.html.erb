@@ -13,17 +13,17 @@
 
       <div class="links">
         <!-- Convert into correct links -->
-        <span><a href="/home" class="active">Dashboard</a></span>
-        <span><a href="/home">My Favorites</a></span>
-        <span><a href="/home">Registration Helper</a></span>
-        <span><a href="/home">Website Masterlist</a></span>
-        <span><a href="/home">User Preferences</a></span>
+        <span><a href="/home" class="active sb-link">Dashboard</a></span>
+        <span><a href="/home" class="sb-link">My Favorites</a></span>
+        <span><a href="/home" class="sb-link">Registration Helper</a></span>
+        <span><a href="/home" class="sb-link">Website Masterlist</a></span>
+        <span><a href="/home" class="sb-link">User Preferences</a></span>
         <%# <span><a href="index.html">Log out</a></span> %>
-        <span><%= button_to "Logout", logout_path%></span>
+        <span><%= button_to "Logout", logout_path, class: "sb-link"%></span>
       </div>
     </div>
     <div class="content">
-      <input class="text-input search" type="text" placeholder="Search (e.g., Computer Science)">
+      <input class="text-input" id="search-bar" type="text" placeholder="Search (e.g., Computer Science)">
     </div>
   </body>
 </html>
