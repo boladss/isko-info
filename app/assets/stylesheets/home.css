@@ -1,0 +1,138 @@
+:root {
+  --sidebar-width: 250px;
+  --margin-height: 20px;
+}
+
+.sidebar {
+  margin: 0;
+  padding: 0;
+  width: var(--sidebar-width);
+  background-color: var(--maroon);
+  position: fixed;
+  left: 0;
+  height: 100%;
+  overflow: auto;
+}
+
+.sb-link {
+  display: block;
+  border: 0;
+  background-color: var(--maroon);
+  color: var(--white-smoke);
+  padding: 10pt 15pt;
+  font-size: large;
+  text-decoration: none;
+  text-align: left;
+}
+
+button.sb-link {
+  width: 100%;
+  cursor: pointer;
+}
+
+.sidebar a.active {
+  background-color: var(--dark-maroon);
+  color: var(--white-smoke);
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-thickness: 0.05rem;
+  text-underline-offset: 15%;
+}
+
+.sidebar a:hover:not(.active), .sidebar button:hover:not(.active) {
+  background-color: var(--light-maroon);
+  color: var(--white-smoke);
+  transition: 0.2s;
+}
+
+.mini-profile {
+  display: flex;
+  flex-direction: row;
+  justify-content: left;
+  align-items: center;
+  margin: var(--margin-height) 10px var(--margin-height) 10px;
+}
+
+.mini-profile h1 {
+  display: block;
+  color: var(--white-smoke);
+  margin: 0;
+  padding: 15px;
+  text-decoration: none;
+  font-size: large;
+  text-align: left;
+}
+
+#name {
+  max-width: calc(75% * var(--sidebar-width));
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.profile-pic {
+  height: 50px;
+  width: 50px;
+}
+
+.divider {
+  background-color: var(--white-smoke);
+  position: relative;
+  height: 3px;
+  margin: 0;
+}
+
+.content {
+  display: flex;
+  margin-left: var(--sidebar-width);
+  padding: var(--margin-height) 10px;
+  justify-content: center;
+  /* height: 100vh; */
+}
+
+#search-bar {
+  display: flex;
+  width: 80%;
+}
+
+@media screen and (max-width: 700px) {
+  :root {
+    --margin-height: 10px;
+  }
+
+  .sidebar {
+    display: block;
+    width: 100%;
+    height: auto;
+    position: relative;
+  }
+
+  .links {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+
+  .sb-link, button.sb-link {
+    display: flex;
+    width: 50vw;
+    padding: 10pt 0;
+    justify-content: center;
+  }
+  .content {margin-left: 0;}
+}
+
+/* .sidebar a, .sidebar button {
+  display: block;
+  border: 0;
+  background-color: var(--maroon);
+  color: var(--white-smoke);
+  padding: 10pt 15pt;
+  font-size: large;
+  text-decoration: none;
+  text-align: left;
+}
+
+.sidebar button {
+  width: 100%;
+  cursor: pointer;
+} */
