@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/loginstudent', to: "pages#loginstudent"
   get '/profilepage', to: "pages#profilepage"
   
-  # post "/home", to: "pages#home"
+  post "/home", to: "pages#home" # ideally, isn't used -- refreshing causes form resubmission
   post '/logindept', to: "pages#logindept"
   post '/loginstudent', to: "pages#loginstudent"
   post '/logout', to: "pages#logout"
