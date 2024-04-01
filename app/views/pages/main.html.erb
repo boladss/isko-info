@@ -15,16 +15,26 @@
 
         <!-- Update links to "/logindept", etc.-->
         <div class="button-wrapper-1">
-          <a href="/loginstudent" class="login-button">Log in as Student</a>
-          <a href="/logindept" class="login-button">Log in as Department</a>
+          <%= link_to "Log in as Student", loginstudent_path, class: "login-button"%>
+          <%= link_to "Log in as Department", logindept_path, class: "login-button"%>
         </div>
 
         <div class="button-wrapper-2">
-          <a href="/signup" class="signup">No account yet? Sign up here</a>
+          <%= link_to "No account yet? Sign up here", signup_path, class: "signup"%>
         </div>
+        <p id="warning"></p>
       </div>
 
     </div>
     <%= image_tag "oblation.png", class: "oblation" %>
+
+    <!--Send message for logging out-->
+    <% if flash[:notice].present? %>
+      <script>
+          document.addEventListener("DOMContentLoaded", function() {
+              document.getElementById("warning").innerHTML = "<%= j flash[:notice] %>"
+          });
+      </script>
+    <% end %>
   </body>
 </html>
