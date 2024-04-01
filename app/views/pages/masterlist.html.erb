@@ -13,16 +13,17 @@
 
       <div class="links">
         <!-- Convert into correct links -->
-        <span><a href="/home" class="active sb-link">Dashboard</a></span>
-        <span><a href="/home" class="sb-link">My Favorites</a></span>
-        <span><a href="/home" class="sb-link">Registration Helper</a></span>
-        <span><a href="/home" class="sb-link">Website Masterlist</a></span>
-        <span><a href="/home" class="sb-link">User Preferences</a></span>
+        <span><%= link_to "Dashboard", home_path, class: "sb-link"%></span>
+        <span><a href="" class="sb-link">My Favorites</a></span>
+        <span><a href="" class="sb-link">Registration Helper</a></span>
+        <span><%= link_to "Website Masterlist", masterlist_path, class: "sb-link active"%></span>
+        <span><a href="" class="sb-link">User Preferences</a></span>
         <span><%= button_to "Logout", logout_path, class: "sb-link"%></span>
       </div>
     </div>
     <div class="content">
       
+      <h2 class="title">UP Diliman Website Master List</h2>
       <!-- Put contents of masterlist here. -->
 
     </div>

@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get '/', to: "pages#main"
   get '/signup', to: "pages#signup"
   get "/home", to: "pages#home"
+  get "/masterlist", to: "pages#masterlist"
   get '/logindept', to: "pages#logindept"
   get '/loginstudent', to: "pages#loginstudent"
   get '/profilepage', to: "pages#profilepage"
