@@ -29,7 +29,7 @@
     <%= image_tag "oblation.png", class: "oblation" %>
 
     <!--Send message for logging out-->
-    <% if flash[:notice].present? %>
+    <% if flash[:notice].present? && flash[:notice].include?("logged out") %>
       <script>
           document.addEventListener("DOMContentLoaded", function() {
               document.getElementById("warning").innerHTML = "<%= j flash[:notice] %>"
