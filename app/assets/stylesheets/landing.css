@@ -7,17 +7,17 @@
 
 .title {
   color: var(--maroon);
-  font-size: 100px;
   font-weight: bold;
   margin: 0 auto;
-  text-align: center;
+  /* text-align: center; */
   /* margin-top: 10px; */
   /* margin-bottom: 20px; */
 }
 
-h2.title {
-  font-size: 50px;
-}
+h1 {font-size: 75pt;}
+h2 {font-size: 36pt;}
+h3 {font-size: 24pt;}
+
 
 .about {
   color: var(--maroon);

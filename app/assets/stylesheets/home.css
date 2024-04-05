@@ -84,14 +84,21 @@ button.sb-link {
 .content {
   display: flex;
   margin-left: var(--sidebar-width);
-  padding: var(--margin-height) 10px;
+  padding: var(--margin-height) calc(10px + 10%);
   justify-content: center;
   /* height: 100vh; */
 }
 
 #search-bar {
   display: flex;
-  width: 80%;
+  width: min(100%, 750pt);
+}
+
+.title-profile {
+  text-align: left;
+  padding-top: 10pt;
+  border-color: var(--maroon);
+  border-bottom: 2pt solid;
 }
 
 @media screen and (max-width: 700px) {
@@ -118,7 +125,14 @@ button.sb-link {
     padding: 10pt 0;
     justify-content: center;
   }
-  .content {margin-left: 0;}
+  .content {
+    margin-left: 0;
+    padding: var(--margin-height) var(--margin-height);
+  }
+
+  #search-bar {
+    width: 90%;
+  }
 }
 
 /* .sidebar a, .sidebar button {

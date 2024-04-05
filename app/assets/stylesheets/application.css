@@ -40,10 +40,19 @@ body {
 }
 
 .center-content {
+  display: inherit;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   text-align: center;
+}
+
+.left-content {
+  display: inherit;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  text-align: left;
 }
 
 .text-input {
@@ -52,6 +61,33 @@ body {
   border: 2px solid var(--transparent-black);
   border-radius: 15px;
   padding: 0 10pt;
+}
+
+.text-input-long {
+  font-size: medium;
+  line-height: 2rem;
+  background-color: var(--white-smoke);
+  border: 1px solid var(--transparent-black);
+  border-radius: 3px;
+  padding: 0 5pt;
+  margin: 10pt 0;
+  width: 50%;
+}
+
+textarea {
+  margin-top: 5pt;
+  background: var(--white-smoke);
+  border: 1px solid var(--transparent-black);
+  border-radius: 3px;
+  width: 60%;
+}
+
+.rich-text-input {
+  font-size: medium;
+  line-height: 2rem;
+  text-align: left;
+  width: min(100%, 750pt);
+  padding: 10pt 0;
 }
 
 .form {
