@@ -14,35 +14,38 @@
   overflow: auto;
 }
 
-.sb-link {
+.sidebar-link {
+  box-sizing: border-box;
   display: block;
   border: 0;
+  border-radius: 10pt;
   background-color: var(--maroon);
   color: var(--white-smoke);
   padding: 10pt 15pt;
+  margin: 0pt 15pt;
+  width: calc(var(--sidebar-width) - 30pt);
   font-size: large;
   text-decoration: none;
   text-align: left;
+  transition: 0.25s;
 }
 
-button.sb-link {
-  width: 100%;
+button.sidebar-link {
   cursor: pointer;
 }
 
-.sidebar a.active {
+.sidebar-link.active {
   background-color: var(--dark-maroon);
   color: var(--white-smoke);
   font-weight: 600;
-  text-decoration: underline;
-  text-decoration-thickness: 0.05rem;
-  text-underline-offset: 15%;
+  /* text-decoration: underline; */
+  /* text-decoration-thickness: 0.05rem; */
+  /* text-underline-offset: 15%; */
 }
 
-.sidebar a:hover:not(.active), .sidebar button:hover:not(.active) {
+.sidebar-link:hover:not(.active) {
   background-color: var(--light-maroon);
   color: var(--white-smoke);
-  transition: 0.2s;
 }
 
 .mini-profile {
@@ -70,15 +73,16 @@ button.sb-link {
 }
 
 .profile-pic {
-  height: 50px;
-  width: 50px;
+  height: 30pt;
+  width: 30pt;
 }
 
-.divider {
+.sidebar-divider {
   background-color: var(--white-smoke);
   position: relative;
-  height: 3px;
-  margin: 0;
+  border: none;
+  height: 2pt;
+  margin: 10pt 15pt;
 }
 
 .content {
@@ -113,18 +117,35 @@ button.sb-link {
     position: relative;
   }
 
+  .sidebar-divider {
+    margin: 5pt 15pt;
+  }
+
   .links {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
   }
 
-  .sb-link, button.sb-link {
+  /* .sidebar-link, button.sidebar-link {
     display: flex;
-    width: 50vw;
-    padding: 10pt 0;
+    margin: 5pt;
+    padding: 5pt 0;
+    width: calc(50vw - 10pt);
     justify-content: center;
+    text-align: center;
+  } */
+
+  .sidebar-link, button.sidebar-link {
+    display: flex;
+    margin: 0;
+    padding: 10pt 10pt;
+    margin: 0pt 5pt;
+    width: calc(50vw - 10pt);
+    /* justify-content: center; */
+    /* text-align: center; */
   }
+
   .content {
     margin-left: 0;
     padding: var(--margin-height) var(--margin-height);
