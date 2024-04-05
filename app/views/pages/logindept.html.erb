@@ -9,7 +9,8 @@
                 <%= form_with url: logindept_path, local: true, method: :post do |f|%>
                     <div class="form">
                         <%= f.text_field :email, placeholder: "Email", class: "username text-input", onkeydown: "moveFocus(event, '.password')" %>
-                        <%= f.password_field :password, type: "password", placeholder: "Password", class: "password text-input", onkeydown: "submitForm(event, '#loginForm')" %>
+                        <%# <%= f.password_field :password, type: "password", placeholder: "Password", class: "password text-input", onkeydown: "submitForm(event, '#loginForm')" %>
+                        <%= f.password_field :password, type: "password", placeholder: "Password", class: "password text-input" %>
                         <div class="button-wrapper-2 center-content">
                             <%= f.submit "Log in", class: "login-button" %>
                         </div>
@@ -37,12 +38,6 @@
                 if (event.key === 'Enter' && event.target.value !== '') {
                 event.preventDefault(); // Prevents form submission
                 document.querySelector(selector).focus();
-                }
-            }
-
-            function submitForm(event, selector) {
-                if (event.key === 'Enter' && event.target.value !== '') {
-                document.querySelector(selector).submit();
                 }
             }
         </script>

@@ -12,7 +12,8 @@
               <%= f.text_field :username, type: "text", placeholder: "Name", class: "fullname text-input", onkeydown: "moveFocus(event, '#email')", id: "username"  %>
               <%= f.email_field :email, type: "email", placeholder: "Email", class: "email text-input", onkeydown: "moveFocus(event, '#password')", id: "email" %>
               <%= f.password_field :password, type: "password", placeholder: "Password", class: "password text-input", onkeydown: "moveFocus(event, '#retype-password')", id: "password" %>
-              <%= f.password_field :password_confirmation, type: "password", placeholder: "Re-type Password", class: "retype-password text-input", onkeydown: "submitForm(event, '#signupForm')", id: "retype-password" %>  
+              <%# <%= f.password_field :password_confirmation, type: "password", placeholder: "Re-type Password", class: "retype-password text-input", onkeydown: "submitForm(event, '#signupForm')", id: "retype-password" %>
+              <%= f.password_field :password_confirmation, type: "password", placeholder: "Re-type Password", class: "retype-password text-input", id: "retype-password" %>  
               <div class="button-wrapper-2 center-content">
                 <%= f.submit "Sign up", class: "login-button", id: "submit"%>
               </div>
@@ -39,12 +40,6 @@
                 if (event.key === 'Enter' && event.target.value !== '') {
                 event.preventDefault(); // Prevents form submission
                 document.querySelector(selector).focus();
-                }
-            }
-
-            function submitForm(event, selector) {
-                if (event.key === 'Enter' && event.target.value !== '') {
-                document.querySelector(selector).submit();
                 }
             }
         </script>
