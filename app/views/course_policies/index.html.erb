@@ -11,18 +11,28 @@
       <hr class="sidebar-divider"/>
 
       <div class="links">
-        <span><%= link_to "Dashboard", home_path, class: "sidebar-link active"%></span>
+        <span><%= link_to "Dashboard", home_path, class: "sidebar-link"%></span>
         <span><a href="" class="sidebar-link">My Favorites</a></span>
         <span><a href="" class="sidebar-link">Registration Helper</a></span>
         <span><%= link_to "Website Masterlist", masterlist_path, class: "sidebar-link"%></span>
         <span><a href="" class="sidebar-link">User Preferences</a></span>
-        <span><%= link_to "Edit Profile [DEPT]", '/dept_profile_edit', class: "sidebar-link"%></span>
+        <span><%= link_to "Edit Profile [DEPT]", '/dept_profile_edit', class: "sidebar-link active"%></span>
         <span><%= button_to "Logout", logout_path, class: "sidebar-link"%></span>
       </div>
     </div>
-    <div class="content">
-      <input class="text-input" id="search-bar" type="text" placeholder="Search (e.g., Computer Science)">
+    <div class="content left-content">
+    <% @course_policies.each do |course_policy| %>
+        <div>
+         <h2><%= link_to course_policy.course_title, course_policy %> </h2>
+        </div>
+    <% end %>
     </div>
+
+    <script>
+      addEventListener("trix-file-accept", function(event) {
+        event.preventDefault();
+      });
+    </script>
   </body>
 </html>
 
