@@ -1,3 +1,57 @@
-h2.title {
-  font-size: 30pt
+.masterlist_container {
+  display: flex;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.masterlist_content {
+  flex-grow: 1;
+  padding-top: 10px;
+  padding-left: 20px;
+  padding-bottom: 10px;
+  padding-right: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.masterlist_title {
+  color: var(--maroon);
+  font-size: 50px;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+
+.masterlist_subtitle {
+  color: var(--maroon);
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+}
+
+.masterlist_subtitle2 {
+  color: var(--maroon);
+  font-size: 20px;
+  margin-top: 10px;
+  margin-bottom: 0px;
+  text-align: center;
+}
+
+table {
+  margin-top: 10px;
+  border: 2px solid black;
+  border-collapse: collapse;
+  text-align: center;
+}
+
+th, td {
+  padding: 5px;
+  border: 2px solid;
+}
+
+th{
+  background-color: maroon;
+  color: var(--white-smoke);
+  border: 2px solid black;
+  border-collapse: collapse;
 }
