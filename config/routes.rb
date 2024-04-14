@@ -16,7 +16,12 @@ Rails.application.routes.draw do
   get '/profilepage', to: "pages#profilepage"
   get '/dept_profile', to: "pages#dept_profile"
   
-  post "/home", to: "pages#home" # ideally, isn't used -- refreshing causes form resubmission
+  get '/dept_profile_edit', to: "course_policies#index"
+  get '/course_policies/:id/edit', to: "course_policies#edit", as: :edit_course_policy 
+  get '/course_policies/:id', to: "course_policies#show", as: :course_policy
+  patch '/course_policies/:id', to: "course_policies#update" 
+  
+  post "/home", to: "pages#home"
   post '/logindept', to: "pages#logindept"
   post '/loginstudent', to: "pages#loginstudent"
   post '/logout', to: "pages#logout"

@@ -14,3 +14,6 @@ function OnInput() {
 
 // Styling: get width of scrollbar
 document.documentElement.style.setProperty('--scrollbar-width', (window.innerWidth - document.documentElement.clientWidth) + "px");
+
+import "trix"
+import "@rails/actiontext"
