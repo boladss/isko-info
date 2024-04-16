@@ -93,6 +93,10 @@ button.sidebar-link {
   /* height: 100vh; */
 }
 
+.content-divider {
+  margin: 2rem 0;
+}
+
 #search-bar {
   display: flex;
   width: min(100%, 750pt);

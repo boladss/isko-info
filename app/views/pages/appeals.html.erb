@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="sidebar">
+      <div class="mini-profile">
+        <%= image_tag "default.png", class: "profile-pic" %>
+        <h1 id="name"><%= session[:data]["email"]%></h1>
+        <!-- <h1>José Protacio Rizal Mercado y Alonso Realonda</h1> -->
+      </div>
+
+      <hr class="divider"/>
+
+      <div class="links">
+        <!-- Convert into correct links -->
+        <span><%= link_to "Dashboard", home_path, class: "sb-link active"%></span>
+        <span><a href="" class="sb-link">My Favorites</a></span>
+        <span><a href="" class="sb-link">Registration Helper</a></span>
+        <span><%= link_to "Website Masterlist", masterlist_path, class: "sb-link"%></span>
+        <span><a href="" class="sb-link">User Preferences</a></span>
+        <span><%= button_to "Logout", logout_path, class: "sb-link"%></span>
+      </div>
+    </div>
+    <div class="appeals_content">
+      <h2 class="appeals_title">Appeals for Class Slots</h2>
+      <p>Check all the courses you want to apply an appeal for and click submit. You may only accomplish this module only once per registration period.</p>
+    </div>
+  </body>
+</html>
+
