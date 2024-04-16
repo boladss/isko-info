@@ -11,3 +11,6 @@ function OnInput() {
   this.style.height = 'auto';
   this.style.height = (this.scrollHeight) + "px";
 }
+
+// Styling: get width of scrollbar
+document.documentElement.style.setProperty('--scrollbar-width', (window.innerWidth - document.documentElement.clientWidth) + "px");

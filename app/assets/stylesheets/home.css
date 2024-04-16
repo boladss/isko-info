@@ -129,6 +129,7 @@ button.sidebar-link {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    padding: 0pt 5pt;
   }
 
   /* .sidebar-link, button.sidebar-link {
@@ -145,7 +146,8 @@ button.sidebar-link {
     margin: 0;
     padding: 10pt 10pt;
     margin: 0pt 5pt;
-    width: calc(50vw - 10pt);
+    width: calc(50vw - 10pt - var(--scrollbar-width));
+    overflow-x:  hidden;
     /* justify-content: center; */
     /* text-align: center; */
   }
