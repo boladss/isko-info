@@ -11,9 +11,9 @@
       <hr class="sidebar-divider"/>
 
       <div class="links">
-        <span><%= link_to "Dashboard", home_path, class: "sidebar-link active"%></span>
+        <span><%= link_to "Dashboard", home_path, class: "sidebar-link"%></span>
         <span><a href="" class="sidebar-link">My Favorites</a></span>
-        <span><%= link_to "Registration Helper", reghelper_path, class: "sidebar-link"%></span>
+        <span><%= link_to "Registration Helper", reghelper_path, class: "sidebar-link active"%></span>
         <span><%= link_to "Website Masterlist", masterlist_path, class: "sidebar-link"%></span>
         <span><a href="" class="sidebar-link">User Preferences</a></span>
         <span><%= link_to "Edit Profile [DEPT]", '/dept_profile_edit', class: "sidebar-link"%></span>
@@ -23,6 +23,14 @@
     <div class="content">
       <input class="text-input" id="search-bar" type="text" placeholder="Search (e.g., Computer Science)">
     </div>
+
+    <button class="dept_button">Department of Art Studies</button>
+    <button class="dept_button">Department of Filipino and Philippine Literature</button>
+    
+    <a href="/deptcs">
+        <button class="dept_button">Department of Computer Science</button>
+    </a>
+
   </body>
 </html>
 
