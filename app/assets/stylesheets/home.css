@@ -8,8 +8,9 @@
   padding: 0;
   width: var(--sidebar-width);
   background-color: var(--maroon);
+  position: fixed;
   left: 0;
-  height: 100vh;
+  height: 100%;
   overflow: auto;
 }
 
@@ -90,6 +91,10 @@ button.sidebar-link {
   padding: var(--margin-height) calc(10px + 10%);
   justify-content: center;
   /* height: 100vh; */
+}
+
+.content-divider {
+  margin: 2rem 0;
 }
 
 #search-bar {

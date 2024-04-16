@@ -2,31 +2,16 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <div class="masterlist_container">
-      <div class="sidebar">
-        <div class="mini-profile">
-          <%= image_tag "default.png", class: "profile-pic" %>
-          <h1 id="name"><%= session[:data]["email"]%></h1>
-          <!-- <h1>José Protacio Rizal Mercado y Alonso Realonda</h1> -->
-        </div>
-
-        <hr class="divider"/>
-
-        <div class="links">
-          <!-- Convert into correct links -->
-          <span><%= link_to "Dashboard", home_path, class: "sb-link"%></span>
-          <span><a href="" class="sb-link">My Favorites</a></span>
-          <span><a href="" class="sb-link">Registration Helper</a></span>
-          <span><%= link_to "Website Masterlist", masterlist_path, class: "sb-link active"%></span>
-          <span><a href="" class="sb-link">User Preferences</a></span>
-          <span><%= button_to "Logout", logout_path, class: "sb-link"%></span>
-        </div>
+    <div class="sidebar">
+      <div class="mini-profile">
+        <%= image_tag "default.png", class: "profile-pic" %>
+        <h1 id="name"><%= session[:data]["email"]%></h1>
+        <!-- <h1>José Protacio Rizal Mercado y Alonso Realonda</h1> -->
       </div>
 
       <hr class="sidebar-divider"/>
 
       <div class="links">
-        <!-- Convert into correct links -->
         <span><%= link_to "Dashboard", home_path, class: "sidebar-link"%></span>
         <span><a href="" class="sidebar-link">My Favorites</a></span>
         <span><a href="" class="sidebar-link">Registration Helper</a></span>
@@ -41,85 +26,83 @@
       <h2 class="title">UP Diliman Website Master List</h2>
       <!-- Put contents of masterlist here. -->
 
-    <%# </div> %>
-      <%# <div class="masterlist_content"> %>
-      <h2 class="masterlist_title">CAMPUS WIDE</h2>
-      <hr>
+      <h3 class="masterlist-title">Campus-wide Directory</h2>
       <table>
         <tr>
           <th>Unit</th>
           <th>Website</th>
           <th>Social Media</th>
-          <th>Phone No</th>
+          <th>Contact Number</th>
           <th>Email</th>
         </tr>
         <tr>
-          <td>UP Diliman</td>
-          <td><a href="https://upd.edu.ph/">redirect</a></td>
-          <td><a href="https://www.facebook.com/OfficialUPDiliman/">Facebook</a><br><a href="https://www.facebook.com/OfficialUPDiliman/">Instagram</a><br><a href="https://twitter.com/Official_UPD">Twitter</a></td>
-          <td>(02) 8981 8500</td>
-          <td>N/A</td>
+          <td class="table-unit">UP Diliman</td>
+          <td class="table-website"><a href="https://upd.edu.ph/">redirect</a></td>
+          <td class="table-socmed"><a href="https://www.facebook.com/OfficialUPDiliman/">Facebook</a><br><a href="https://www.facebook.com/OfficialUPDiliman/">Instagram</a><br><a href="https://twitter.com/Official_UPD">Twitter</a></td>
+          <td class="table-number">(02) 8981 8500</td>
+          <td class="table-email">N/A</td>
         </tr>
         <tr>
-          <td>Office of the University Registrar</td>
-          <td><a href="https://our.upd.edu.ph/">redirect</a></td>
-          <td>N/A</td>
-          <td>(632)8981-8500</td>
-          <td>oadms@up.edu.ph</td>
-        </tr>
-      </table>
-
-      <h2 class="masterlist_title">COLLEGE WIDE</h2>
-      <h3 class="masterlist_subtitle">College of Engineering</h3>
-      <table>
-        <tr>
-          <th>Unit</th>
-          <th>Website</th>
-          <th>Social Media</th>
-          <th>Phone No</th>
-          <th>Email</th>
-        </tr>
-        <tr>
-          <td>College of Engineering</td>
-          <td><a href="https://coe.upd.edu.ph/">redirect</a></td>
-          <td><a href="https://www.facebook.com/updengg/">Facebook</a><br><a href="https://twitter.com/updengg">Twitter</a></td>
-          <td>(02) 8981 8500</td>
-          <td>upengg@coe.upd.edu.ph</td>
-        </tr>
-        <tr>
-          <td>Engineering Student Council</td>
-          <td>N/A</td>
-          <td><a href="https://www.facebook.com/esc.upd/">Facebook</a></td>
-          <td>N/A</td>
-          <td>esc@coe.upd.edu.ph</td>
+          <td class="table-unit">Office of the University Registrar</td>
+          <td class="table-website"><a href="https://our.upd.edu.ph/">redirect</a></td>
+          <td class="table-socmed">N/A</td>
+          <td class="table-number">(632)8981-8500</td>
+          <td class="table-email">oadms@up.edu.ph</td>
         </tr>
       </table>
       
-      <h3 class="masterlist_subtitle2">Constituent Departments</h3>
+      <hr class=content-divider>
+
+      <h3 class="masterlist-title">College-wide Directory</h2>
+      <h4 class="masterlist-title">College of Engineering</h3>
       <table>
         <tr>
           <th>Unit</th>
           <th>Website</th>
           <th>Social Media</th>
-          <th>Phone No</th>
+          <th>Contact Number</th>
           <th>Email</th>
         </tr>
         <tr>
-          <td>Department of Computer Science</td>
-          <td><a href="https://dcs.upd.edu.ph/">redirect</a></td>
-          <td><a href="https://www.facebook.com/upddcs/">Facebook</a></td>
-          <td>(02) 434 3877</td>
-          <td>info@dcs.upd.edu.ph</td>
+          <td class="table-unit">College of Engineering</td>
+          <td class="table-website"><a href="https://coe.upd.edu.ph/">redirect</a></td>
+          <td class="table-socmed"><a href="https://www.facebook.com/updengg/">Facebook</a><br><a href="https://twitter.com/updengg">Twitter</a></td>
+          <td class="table-number">(02) 8981 8500</td>
+          <td class="table-email">upengg@coe.upd.edu.ph</td>
         </tr>
         <tr>
-          <td>Institute of Civil Engineering</td>
-          <td><a href="https://ice.upd.edu.ph/">redirect</a></td>
-          <td><a href="https://www.facebook.com/ice.upd.edu.ph/">Facebook</a><br><a href="https://twitter.com/ICEupdiliman">Twitter</a></td>
-          <td>(02) 8981 8500</td>
-          <td>esc@coe.upd.edu.ph</td>
+          <td class="table-unit">Engineering Student Council</td>
+          <td class="table-website">N/A</td>
+          <td class="table-socmed"><a href="https://www.facebook.com/esc.upd/">Facebook</a></td>
+          <td class="table-number">N/A</td>
+          <td class="table-email">esc@coe.upd.edu.ph</td>
         </tr>
       </table>
-    <%# </div> %>
+      
+      <h4 class="masterlist-title">Constituent Departments</h3>
+      <table>
+        <tr>
+          <th>Unit</th>
+          <th>Website</th>
+          <th>Social Media</th>
+          <th>Contact Number</th>
+          <th>Email</th>
+        </tr>
+        <tr>
+          <td class="table-unit">Department of Computer Science</td>
+          <td class="table-website"><a href="https://dcs.upd.edu.ph/">redirect</a></td>
+          <td class="table-socmed"><a href="https://www.facebook.com/upddcs/">Facebook</a></td>
+          <td class="table-number">(02) 434 3877</td>
+          <td class="table-email">info@dcs.upd.edu.ph</td>
+        </tr>
+        <tr>
+          <td class="table-unit">Institute of Civil Engineering</td>
+          <td class="table-website"><a href="https://ice.upd.edu.ph/">redirect</a></td>
+          <td class="table-socmed"><a href="https://www.facebook.com/ice.upd.edu.ph/">Facebook</a><br><a href="https://twitter.com/ICEupdiliman">Twitter</a></td>
+          <td class="table-number">(02) 8981 8500</td>
+          <td class="table-email">esc@coe.upd.edu.ph</td>
+        </tr>
+      </table>
     </div>
   </body>
 </html>
