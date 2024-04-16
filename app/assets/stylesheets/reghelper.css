@@ -1,0 +1,125 @@
+.dept_button {
+    width: 82%; /* Set the width to 100% */
+    height: 109px;
+    background: #FFF;
+    border: none; /* Removes default button border */
+    cursor: pointer; /* Changes cursor to hand on hover */
+    color: var(--maroon);
+    padding-left: 50px;
+    font-size: 25px;
+    text-align: left;
+    font-weight: bold; /* Make the text bold */
+    margin-top: 10px; /* Add space after the button */
+    margin-bottom: 20px; /* Add space after the button */
+    margin-left: 280px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow to the button */
+    transition: background 0.3s ease, color 0.3s ease; /* Add transition */
+}
+
+.dept_button:hover {
+    color: #FFF; /* Inverted text color */
+    background: var(--maroon); /* Inverted background color */
+}
+
+.class_container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.fb-post {
+    background: white; /* Make the background white */
+    width: 500px; /* Set the width to match the iframe */
+    height: 100%; /* Set the height to match the iframe */
+    float: right; /* Float the div to the right */
+    margin-right: 20px;
+    margin-top: 10px; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow to the box */
+}
+
+.class_button {
+    width: 880px; /* Set the width to 100% */
+    height: 109px;
+    overflow: hidden;
+    background: #FFF;
+    border: none; /* Removes default button border */
+    cursor: pointer; /* Changes cursor to hand on hover */
+    color: var(--maroon);
+    padding-left: 50px;
+    font-size: 25px;
+    text-align: left;
+    font-weight: bold; /* Make the text bold */
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow to the button */
+    margin-top: 10px; /* Add space after the button */
+    margin-bottom: 20px; /* Add space after the button */
+    margin-left: 280px;
+    transition: background 0.3s ease, color 0.3s ease; /* Add transition */
+}
+
+.class_button:hover {
+    color: #FFF; /* Inverted text color */
+    background: var(--maroon); /* Inverted background color */
+}
+
+.class_button:hover .subtext {
+    color: #FFF; /* Change the color of the subtext on hover */
+}
+
+.subtext {
+    font-size: 0.6em; /* Make the font size smaller */
+    color: #000; /* Make the color lighter */
+    font-weight: normal; /* Make the text not bold */
+    transition: color 0.3s ease; /* Add transition to the color */
+
+}
+
+.class_details_container {
+    background-color: white; /* Make the background white */
+    color: black; /* Make the text color black */
+    padding-left: 50px;
+    padding: 50px; /* Add padding to the container */
+    margin-left: 280px;
+    margin-top: 10px;
+    width: 780px; /* Set the width to 100% */
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+
+}
+
+.bold-text {
+    font-weight: bold; /* Make the text bold */
+}
+
+.class_titles {
+    font-size: 1.5em;
+    margin-top: 10px; /* Add space after the text */
+    margin-bottom: 10px; /* Add space after the text */
+    color: var(--maroon);
+    font-weight: bold;
+}
+
+.appeal_button {
+    font-size: 1em;
+    padding: 10px 20px; /* Add circular padding */
+    background-color: var(--maroon); /* Set the background color */
+    color: #fff; /* Set the text color */
+    border: none; /* Remove the border */
+    border-radius: 50px; /* Make the corners rounded */
+    margin-top: 10px; /* Add space after the button */
+    cursor: pointer; /* Change the cursor to a hand when hovered over */
+    transition: background-color 0.3s ease, color 0.3s ease; /* Add transition to the background color and text color */
+}
+
+.appeal_button:hover {
+    background-color: #fff; /* Invert the background color on hover */
+    color: var(--maroon); /* Invert the text color on hover */
+}
+
+.back-button {
+    width: 80px; /* Make the button slightly smaller */
+    height: 80px; /* Make the button slightly smaller */
+    position: absolute; /* Position the button absolutely */
+    bottom: 20px; /* Position the button at the bottom of the sidebar */
+    left: 50%; /* Center the button horizontally */
+    transform: translateX(-50%); /* Center the button horizontally */
+}
