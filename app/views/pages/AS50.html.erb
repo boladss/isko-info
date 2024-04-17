@@ -20,35 +20,44 @@
         <span><%= button_to "Logout", logout_path, class: "sidebar-link"%></span>
       </div>
 
-        <%= link_to image_tag("back_button.png", class: "back-button"), reghelper_path %>
-
+      <%= link_to image_tag("back_button.png", class: "back-button"), deptart_path %>
+      
     </div>
-    
     <div class="content">
-        <input class="text-input" id="search-bar" type="text" placeholder="Department of Computer Science">
+      <input class="text-input" id="search-bar" type="text" placeholder="AS 50">
     </div>
 
     <div class="class_container">
-        <div>
-            
-            <a href="/CS11"><button class="class_button">
-                <div>CS11 - 4.0 UNITS</div>
-                <div class="subtext">Computer Programming I</div>
-            </button></a>
+        <div class="class_details_container">
+            <div class="class_titles">Information:</div>
+            <div class="bold-text">Course Title:</div> The Field of Art Studies
+            <div class="bold-text">Description:</div> Introduction to Art Studies.
+            <div class="bold-text">Prerequisites:</div> None
+            <div class="bold-text">Classifications and Units:</div> Major Course, 3.0 Units
 
-            <a href="/CS12"><button class="class_button">
-                <div>CS12 - 4.0 UNITS</div>
-                <div class="subtext">Computer Programming II</div>
-            </button></a>
+            <div class="class_titles">Offering Department:</div>
+            <div>Department of Art Studies</div>
 
+            <div class="class_titles">Prerog Policy:</div>
+            <div>Strictly departmental prerog only. Please fill up this google form to prerog</div>
+
+            <div class="class_titles">Waitlisting Schedule:</div>
+            <div class="bold-text">Opens:</div> Feb 1 8:00 AM 
+            <div class="bold-text">Closes:</div> Feb 1 5:00 PM
+
+            <div class="class_titles">Available Slots for All Sections:</div>
+            <div>0 out of 115 slots</div>
+
+            <a href="/appeal_success"><button class="appeal_button">Request for Appeal</button></a>
         </div>
 
         <div class="fb-post">
             <iframe   iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fupddcs%2Fposts%2F847309173862672&show_text=true&width=500" width="500" height="645" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
         </div>
+
+
     </div>
 
-    
 
   </body>
 </html>

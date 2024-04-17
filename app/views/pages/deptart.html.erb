@@ -19,22 +19,31 @@
         <span><%= link_to "Edit Profile [DEPT]", '/dept_profile_edit', class: "sidebar-link"%></span>
         <span><%= button_to "Logout", logout_path, class: "sidebar-link"%></span>
       </div>
-    </div>
-    <div class="content">
-      <input class="text-input" id="search-bar" type="text" placeholder="Search (e.g., Computer Science)">
-    </div>
 
-    <a href="/deptart">
-        <button class="dept_button">Department of Art Studies</button>
-    </a>
+        <%= link_to image_tag("back_button.png", class: "back-button"), reghelper_path %>
 
-    <a href="/deptfpl">
-        <button class="dept_button">Department of Filipino and Philippine Literature</button>
-    </a>
+    </div>
     
-    <a href="/deptcs">
-        <button class="dept_button">Department of Computer Science</button>
-    </a>
+    <div class="content">
+        <input class="text-input" id="search-bar" type="text" placeholder="Department of Art Studies">
+    </div>
+
+    <div class="class_container">
+        <div>
+            
+            <a href="/AS50"><button class="class_button">
+                <div>AS50 - 3.0 UNITS</div>
+                <div class="subtext">The Field of Art Studies</div>
+            </button></a>
+
+        </div>
+
+        <div class="fb-post">
+            <iframe   iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fupddcs%2Fposts%2F847309173862672&show_text=true&width=500" width="500" height="645" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+    </div>
+
+    
 
   </body>
 </html>
