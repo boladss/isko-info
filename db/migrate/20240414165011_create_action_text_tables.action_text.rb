@@ -4,7 +4,7 @@ class CreateActionTextTables < ActiveRecord::Migration[6.0]
     # Use Active Record's configured type for primary and foreign keys
     primary_key_type, foreign_key_type = primary_and_foreign_key_types
 
-    drop_table :action_text_rich_texts
+    # drop_table :action_text_rich_texts
     create_table :action_text_rich_texts, id: primary_key_type do |t|
       t.string     :name, null: false
       t.text       :body, size: :long
