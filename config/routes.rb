@@ -17,8 +17,19 @@ Rails.application.routes.draw do
   get '/dept_profile', to: "pages#dept_profile"
 
   get "/reghelper", to: "pages#reghelper"
+
+  # Department of Computer Science
   get "/deptcs", to: "pages#deptcs"
   get "/CS11", to: "pages#CS11"
+  get "/CS12", to: "pages#CS12"
+
+  # Department of Art Studies
+  get "/deptart", to: "pages#deptart"
+  get "/AS50", to: "pages#AS50"
+
+  # Department of Filipino and Philippine Literature
+  get "/deptfpl", to: "pages#deptfpl"
+  get "/FIL40", to: "pages#FIL40"
 
   get "/appeal_success", to: "pages#appeal_success"
 
