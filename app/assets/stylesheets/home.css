@@ -99,7 +99,8 @@ button.sidebar-link {
 
 #search-bar {
   display: flex;
-  width: min(100%, 750pt);
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .title-profile {
@@ -158,7 +159,7 @@ button.sidebar-link {
   }
 
   #search-bar {
-    width: 90%;
+    width: 100%;
   }
 }
 
