@@ -45,4 +45,7 @@ Rails.application.routes.draw do
   post '/signup', to: "pages#signup"
   post '/profilepage', to: "pages#profilepage"
   
+  # Databse connection error
+  get '/errorpage', to: "pages#errorpage"
+  #get '/errorpage', to: 'errors#database_connection_error'
 end
