@@ -1,0 +1,116 @@
+.reg-button {
+    width: 100%;
+    height: 75pt;
+    margin: 10pt 0;
+    padding: 10pt;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+    box-shadow: 0pt 2pt 4pt hsla(0, 0%, 0%, 20%);
+    font-size: 20pt;
+    font-weight: bold;
+    text-align: left;
+    color: var(--maroon);
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+.reg-button:hover {
+    color: white;
+    background: var(--maroon);
+}
+
+.course-button {
+    width: 100%;
+}
+
+.course-container {
+    flex-direction: column;
+    min-width: 200pt;
+    width: calc(100% - 520px);
+}
+
+.course-wrapper {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+}
+
+.course-details-wrapper {
+    margin-left: var(--sidebar-width);
+}
+
+.fb-post {
+    background: white; /* Make the background white */
+    width: 500px; /* Set the width to match the iframe */
+    height: 100%; /* Set the height to match the iframe */
+    float: right; /* Float the div to the right */
+    margin: 10pt 20pt; 
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2); /* Add shadow to the box */
+}
+
+.course-button:hover {
+    color: #FFF; /* Inverted text color */
+    background: var(--maroon); /* Inverted background color */
+}
+
+.course-button:hover .subtext {
+    color: #FFF; /* Change the color of the subtext on hover */
+}
+
+.subtext {
+    font-size: 0.6em; /* Make the font size smaller */
+    color: #000; /* Make the color lighter */
+    font-weight: normal; /* Make the text not bold */
+    transition: color 0.3s ease; /* Add transition to the color */
+}
+
+.course-details-container {
+    background-color: white; /* Make the background white */
+    color: black; /* Make the text color black */
+    padding: 20pt;
+    margin: 10pt 20pt;
+    margin-right: 0pt;
+    width: 100%; /* Set the width to 100% */
+    height: 100%;
+    overflow: hidden;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.bold-text {
+    font-weight: bold; /* Make the text bold */
+}
+
+.course-heading {
+    font-size: 1.5em;
+    margin-top: 10px; /* Add space after the text */
+    margin-bottom: 10px; /* Add space after the text */
+    color: var(--maroon);
+    font-weight: bold;
+}
+
+.appeal-button {
+    /* padding: 10px 20px; */
+    margin: 10pt 0;
+}
+
+.appeal-button:disabled {
+    opacity: 50%;
+    cursor: not-allowed;
+    /* pointer-events: none; */
+}
+
+.back-button {
+    width: 80px; /* Make the button slightly smaller */
+    height: 80px; /* Make the button slightly smaller */
+    position: absolute; /* Position the button absolutely */
+    bottom: 20px; /* Position the button at the bottom of the sidebar */
+    left: 50%; /* Center the button horizontally */
+    transform: translateX(-50%); /* Center the button horizontally */
+}
+
+@media screen and (max-width: 700px) {
+    .course-details-wrapper { margin-left: 0;}
+    .course-container { width: 100%; }
+    .fb-post { display: none; }
+}

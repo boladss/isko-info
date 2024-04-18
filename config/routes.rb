@@ -14,13 +14,38 @@ Rails.application.routes.draw do
   get '/logindept', to: "pages#logindept"
   get '/loginstudent', to: "pages#loginstudent"
   get '/profilepage', to: "pages#profilepage"
-  get '/dept_profile', to: "pages#dept_profile"
   
-  post "/home", to: "pages#home" # ideally, isn't used -- refreshing causes form resubmission
+
+  get "/reghelper", to: "pages#reghelper"
+
+  # Department of Computer Science
+  get "/deptcs", to: "pages#deptcs"
+  get "/CS11", to: "pages#CS11"
+  get "/CS12", to: "pages#CS12"
+
+  # Department of Art Studies
+  get "/deptart", to: "pages#deptart"
+  get "/AS50", to: "pages#AS50"
+
+  # Department of Filipino and Philippine Literature
+  get "/deptfpl", to: "pages#deptfpl"
+  get "/FIL40", to: "pages#FIL40"
+
+  get "/appeal_success", to: "pages#appeal_success"
+
+  get '/dept_profile', to: "course_policies#index"
+  get '/course_policies/:id/edit', to: "course_policies#edit", as: :edit_course_policy 
+  get '/course_policies/:id', to: "course_policies#show", as: :course_policy
+  patch '/course_policies/:id', to: "course_policies#update" 
+  
+  post "/home", to: "pages#home"
   post '/logindept', to: "pages#logindept"
   post '/loginstudent', to: "pages#loginstudent"
   post '/logout', to: "pages#logout"
   post '/signup', to: "pages#signup"
   post '/profilepage', to: "pages#profilepage"
   
+  # Databse connection error
+  get '/errorpage', to: "pages#errorpage"
+  #get '/errorpage', to: 'errors#database_connection_error'
 end
