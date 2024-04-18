@@ -14,7 +14,7 @@ Rails.application.routes.draw do
   get '/logindept', to: "pages#logindept"
   get '/loginstudent', to: "pages#loginstudent"
   get '/profilepage', to: "pages#profilepage"
-  get '/dept_profile', to: "pages#dept_profile"
+  
 
   get "/reghelper", to: "pages#reghelper"
 
@@ -33,7 +33,7 @@ Rails.application.routes.draw do
 
   get "/appeal_success", to: "pages#appeal_success"
 
-  get '/dept_profile_edit', to: "course_policies#index"
+  get '/dept_profile', to: "course_policies#index"
   get '/course_policies/:id/edit', to: "course_policies#edit", as: :edit_course_policy 
   get '/course_policies/:id', to: "course_policies#show", as: :course_policy
   patch '/course_policies/:id', to: "course_policies#update" 

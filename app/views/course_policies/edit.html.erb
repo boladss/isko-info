@@ -17,20 +17,27 @@
         <span><%= link_to "Website Masterlist", masterlist_path, class: "sidebar-link"%></span>
         <span><a href="" class="sidebar-link">User Preferences</a></span>
         <span><%= link_to "Edit Profile [HTML]", dept_profile_path, class: "sidebar-link"%></span>
-        <span><%= link_to "Edit Profile [DEPT]", '/dept_profile_edit', class: "sidebar-link"%></span>
+        <span><%= link_to "Edit Profile [DEPT]", dept_profile_path, class: "sidebar-link"%></span>
         <span><%= button_to "Logout", logout_path, class: "sidebar-link"%></span>
       </div>
     </div>
     <div class="content left-content">
 
         <h3 class="title title-profile">Information</h3>
-        <form class="dept-input">
+        <%=  form_with model: @course_policy do |form| %>
+          <% if form.object.errors.any? %>
+            <div>
+              <% form.object.errors.full_messages.each do |message|%>
+              <%= message %>
+               <% end %>
+            </div>
+            <% end %>
+
             <label for="course-title" style="margin-right: 5pt;"><b>Course Title:</b></label>
-            <input type="text" id="course-title" name="course-title" class="text-input text-input-long" placeholder="Input course title here..."> <br/>
+            <%= form.text_field :course_title%> <br/>
             <label for="course-desc"><b>Course Description:</b></label><br/>
-            <textarea id="course-desc" name="course-desc" rows="3" cols="50" placeholder="Input course description here..." style="width:50%;"></textarea>
-        </form>
-        <%= form_with model: @course_policy do |form| %>
+            <%= form.text_field :course_description%>
+        
         <h3 class="title title-profile">Prerogative Policy</h3>
         <!-- Need to convert these into ROR forms -->
         <%= form.label :prerogative_policy%>
@@ -50,6 +57,7 @@
         <%= form.rich_text_area :other_information%>
         <%= form.button %>
         <% end %>
+        <%= link_to "discard changes", @course_policy, class: "btn btn-primary" %>
     </div>
 
     <script>

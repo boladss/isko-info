@@ -25,5 +25,6 @@ class CoursePoliciesController < ApplicationController
     private
     def course_policy_params
         params.require(:course_policy).permit(:course_title, :course_description, :prerogative_policy, :waitlisting_schedule, :cancellation_procedure, :other_information)
+    
     end
 end
