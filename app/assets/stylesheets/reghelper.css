@@ -101,13 +101,17 @@
 }
 
 .back-button {
-    width: 80px; /* Make the button slightly smaller */
-    height: 80px; /* Make the button slightly smaller */
-    position: absolute; /* Position the button absolutely */
-    bottom: 20px; /* Position the button at the bottom of the sidebar */
-    left: 50%; /* Center the button horizontally */
-    transform: translateX(-50%); /* Center the button horizontally */
+    border: dotted;
 }
+
+/* .back-button {
+    width: 80px;
+    height: 80px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%; 
+    transform: translateX(-50%);
+} */
 
 @media screen and (max-width: 700px) {
     .course-details-wrapper { margin-left: 0;}

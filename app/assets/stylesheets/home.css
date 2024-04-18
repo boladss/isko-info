@@ -120,6 +120,7 @@ button.sidebar-link {
     width: 100%;
     height: auto;
     position: relative;
+    padding-bottom: 5pt;
   }
 
   .sidebar-divider {
@@ -130,7 +131,7 @@ button.sidebar-link {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
-    padding: 0pt 5pt;
+    /* padding: 0pt 5pt; */
   }
 
   /* .sidebar-link, button.sidebar-link {
