@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <div class="sidebar">
+      <div class="mini-profile">
+        <%= image_tag "default.png", class: "profile-pic" %>
+        <h1 id="name"><%= session[:data]["email"]%></h1>
+        <!-- <h1>José Protacio Rizal Mercado y Alonso Realonda</h1> -->
+      </div>
+
+      <hr class="sidebar-divider"/>
+
+      <div class="links">
+        <span><%= link_to "Dashboard", home_path, class: "sidebar-link"%></span>
+        <span><a href="" class="sidebar-link">My Favorites</a></span>
+        <span><%= link_to "Registration Helper", reghelper_path, class: "sidebar-link"%></span>
+        <span><%= link_to "Website Masterlist", masterlist_path, class: "sidebar-link"%></span>
+        <span><a href="" class="sidebar-link">User Preferences</a></span>
+        <span><%= link_to "Edit Profile [DEPT]", dept_profile_path, class: "sidebar-link"%></span>
+        <span><%= button_to "Logout", logout_path, class: "sidebar-link"%></span>
+      </div>
+    </div>
+    <div class="content left-content">
+
+      <h3 class="title title-profile">Information</h3>
+      <form class="dept-input">
+        <label for="course-title" style="margin-right: 5pt;"><b>Course Title:</b></label>
+        <%= @course_policy.course_title %> <br/>
+        <label for="course-desc"><b>Course Description:</b></label><br/>
+        <%= @course_policy.course_description %>
+      </form>
+
+      <h3 class="title title-profile">Prerogative Policy</h3>
+      <!-- Need to convert these into ROR forms -->
+      <%= @course_policy.prerogative_policy %> 
+
+      <h3 class="title title-profile">Waitlisting Schedule</h3>
+      <!-- Need to convert these into ROR forms -->
+      <%= @course_policy.waitlisting_schedule %>
+
+      <h3 class="title title-profile">Cancellation Procedure</h3>
+      <!-- Need to convert these into ROR forms -->
+      <%= @course_policy.cancellation_procedure %>
+
+      <h3 class="title title-profile">Other Information</h3>
+      <!-- Need to convert these into ROR forms -->
+      <%= @course_policy.other_information %>
+
+      <br/><br/>
+      <%= link_to 'Edit Profile', edit_course_policy_path, class: 'login-button' %>
+    </div>
+
+    <script>
+      addEventListener("trix-file-accept", function(event) {
+        event.preventDefault();
+      });
+    </script>
+  </body>
+</html>
+

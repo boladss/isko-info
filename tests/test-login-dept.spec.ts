@@ -28,7 +28,7 @@ test('login-dept: click login', async ({ page }) => {
   await page.getByPlaceholder('Password').press('Enter');
   await expect(page.getByText('Welcome to IskoInfo!')).toBeVisible();
   await expect(page.locator('#profile')).toContainText(EMAIL);
-  await page.getByRole('button', { name: 'Home' }).click();
+  await page.getByRole('link', { name: 'Home' }).click();
   await expect(page.locator('#name')).toContainText(EMAIL);
   await expect(page.getByText('Dashboard')).toBeVisible();
 });

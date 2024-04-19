@@ -1,0 +1,44 @@
+.masterlist-title {
+  color: var(--maroon);
+  text-align: left;
+  margin-bottom: 0;
+}
+
+h3.masterlist-title {
+  font-size: 36px;
+  margin-top: 2rem;
+}
+
+h4.masterlist-title {
+  font-size: 24px;
+  font-weight: normal;
+  margin-top: 1rem;
+}
+
+table {
+  margin-top: 10px;
+  border: 2px solid black;
+  border-collapse: collapse;
+  text-align: center;
+  width: 100%;
+}
+
+th, td {
+  padding: 5px;
+  border: 2px solid;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+}
+
+th {
+  background-color: maroon;
+  color: var(--white-smoke);
+  border: 2px solid black;
+  border-collapse: collapse;
+}
+
+th.table-unit, td.table-unit { width: 30%;}
+th.table-website, td.table-website { width: 15%;}
+th.table-socmed, td.table-socmed { width: 15%;}
+th.table-number, td.table-number { width: 15%;}
+th.table-email, td.table-email { width: 25%;}

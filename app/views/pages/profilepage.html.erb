@@ -6,7 +6,7 @@
                 <h2 class="title">Welcome to IskoInfo!</h2>
                 <p><b>Current User:</b> <%=  session[:email]%></p>
                 <div class="button-wrapper-1">
-                    <%= button_to "Home", home_path, class:"login-button"%>
+                    <%= link_to "Home", home_path, class:"login-button"%>
                     <%= button_to "Log out", logout_path, class:"login-button"%>
                 </div>
             </div>

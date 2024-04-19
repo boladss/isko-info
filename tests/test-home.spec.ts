@@ -4,7 +4,7 @@ const USERNAME = "usertest";
 const EMAIL = "user@test.com";
 const PASSWORD = "password1234";
 
-test('home: view dashboard', async ({ page }) => {
+async function testLoginStudent(page) {
   await page.goto('http://localhost:3000/loginstudent');
 
   await page.getByPlaceholder('Email or username').click();
@@ -12,6 +12,10 @@ test('home: view dashboard', async ({ page }) => {
   await page.getByPlaceholder('Email or username').press('Enter');
   await page.getByPlaceholder('Password').fill(PASSWORD);
   await page.getByPlaceholder('Password').press('Enter');
+}
+
+test('home: view dashboard', async ({ page }) => {
+  await testLoginStudent(page);
 
   await page.goto('http://localhost:3000/home');
 
@@ -20,13 +24,7 @@ test('home: view dashboard', async ({ page }) => {
 });
 
 test('home: logout successfully', async ({ page }) => {
-  await page.goto('http://localhost:3000/loginstudent');
-
-  await page.getByPlaceholder('Email or username').click();
-  await page.getByPlaceholder('Email or username').fill(USERNAME); // Existing user in database used in test cases
-  await page.getByPlaceholder('Email or username').press('Enter');
-  await page.getByPlaceholder('Password').fill(PASSWORD);
-  await page.getByPlaceholder('Password').press('Enter');
+  await testLoginStudent(page);
 
   await page.goto('http://localhost:3000/home');
   
