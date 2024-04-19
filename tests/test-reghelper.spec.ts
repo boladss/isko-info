@@ -73,11 +73,11 @@ test('reg-helper: appeal', async ({ page }) => {
   // CS 11 & AS 50 simulates class that has NO MORE SLOTS
   await page.goto('http://localhost:3000/CS11');
   await page.getByRole('button', { name: 'Request for Appeal' }).click();
-  await expect(page.getByText('for the course CS 11')).toBeVisible();
+  await expect(page.getByText('successfully submitted')).toBeVisible();
 
   await page.goto('http://localhost:3000/AS50');
   await page.getByRole('button', { name: 'Request for Appeal' }).click();
-  await expect(page.getByText('for the course AS 50')).toBeVisible();
+  await expect(page.getByText('successfully submitted')).toBeVisible();
 
   // CS 12 simulates class that STILL HAS SLOTS
   await page.goto('http://localhost:3000/CS12');
