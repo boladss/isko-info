@@ -16,17 +16,18 @@
         <span><%= link_to "Registration Helper", reghelper_path, class: "sidebar-link"%></span>
         <span><%= link_to "Website Masterlist", masterlist_path, class: "sidebar-link"%></span>
         <span><a href="" class="sidebar-link">User Preferences</a></span>
-        <span><%= link_to "Edit Profile [HTML]", dept_profile_path, class: "sidebar-link"%></span>
         <span><%= link_to "Edit Profile [DEPT]", dept_profile_path, class: "sidebar-link"%></span>
+        
         <span><%= button_to "Logout", logout_path, class: "sidebar-link"%></span>
       </div>
     </div>
     <div class="content left-content">
-    <% @course_policies.each do |course_policy| %>
-        <div>
-         <h2><%= link_to course_policy.course_title, course_policy %> </h2>
-        </div>
-    <% end %>
+      <h2 class="title">Edit Profile [Department]</h2>
+      <br/> <br/>
+
+      <% @course_policies.each do |course_policy| %>
+          <%= link_to course_policy.course_title, course_policy, class: "reg-button" %>
+      <% end %>
     </div>
 
     <script>

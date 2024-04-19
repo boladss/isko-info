@@ -15,6 +15,11 @@
     transition: background 0.3s ease, color 0.3s ease;
 }
 
+link.reg-button {
+    margin: 10pt;
+    
+}
+
 .reg-button:hover {
     color: white;
     background: var(--maroon);

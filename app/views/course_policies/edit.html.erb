@@ -16,8 +16,8 @@
         <span><%= link_to "Registration Helper", reghelper_path, class: "sidebar-link"%></span>
         <span><%= link_to "Website Masterlist", masterlist_path, class: "sidebar-link"%></span>
         <span><a href="" class="sidebar-link">User Preferences</a></span>
-        <span><%= link_to "Edit Profile [HTML]", dept_profile_path, class: "sidebar-link"%></span>
         <span><%= link_to "Edit Profile [DEPT]", dept_profile_path, class: "sidebar-link"%></span>
+        
         <span><%= button_to "Logout", logout_path, class: "sidebar-link"%></span>
       </div>
     </div>
@@ -40,24 +40,27 @@
         
         <h3 class="title title-profile">Prerogative Policy</h3>
         <!-- Need to convert these into ROR forms -->
-        <%= form.label :prerogative_policy%>
+        <%# <%= form.label :prerogative_policy %>
         <%= form.rich_text_area :prerogative_policy%>
 
 
         <h3 class="title title-profile">Waitlisting Schedule</h3>
-        <%= form.label :waitlisting_schedule%>
+        <%# <%= form.label :waitlisting_schedule%>
         <%= form.rich_text_area :waitlisting_schedule%>
 
         <h3 class="title title-profile">Cancellation Procedure</h3>
-        <%= form.label :cancellation_procedure%>
+        <%# <%= form.label :cancellation_procedure%>
         <%= form.rich_text_area :cancellation_procedure%>
 
         <h3 class="title title-profile">Other Information</h3>
-        <%= form.label :other_information%>
+        <%# <%= form.label :other_information%>
         <%= form.rich_text_area :other_information%>
-        <%= form.button %>
+
+        <br/>
+        <%= form.button class:"login-button"%>
         <% end %>
-        <%= link_to "discard changes", @course_policy, class: "btn btn-primary" %>
+        <br/>
+        <%= link_to "Discard changes", @course_policy, class: "signup" %>
     </div>
 
     <script>

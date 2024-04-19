@@ -16,8 +16,7 @@
         <span><%= link_to "Registration Helper", reghelper_path, class: "sidebar-link"%></span>
         <span><%= link_to "Website Masterlist", masterlist_path, class: "sidebar-link"%></span>
         <span><a href="" class="sidebar-link">User Preferences</a></span>
-        <span><%= link_to "Edit Profile [HTML]", dept_profile_path, class: "sidebar-link"%></span>
-        <span><%= link_to "Edit Profile [DEPT]", '/dept_profile', class: "sidebar-link"%></span>
+        <span><%= link_to "Edit Profile [DEPT]", dept_profile_path, class: "sidebar-link"%></span>
         <span><%= button_to "Logout", logout_path, class: "sidebar-link"%></span>
       </div>
     </div>
@@ -26,7 +25,7 @@
       <h3 class="title title-profile">Information</h3>
       <form class="dept-input">
         <label for="course-title" style="margin-right: 5pt;"><b>Course Title:</b></label>
-        <%= @course_policy.course_title %>
+        <%= @course_policy.course_title %> <br/>
         <label for="course-desc"><b>Course Description:</b></label><br/>
         <%= @course_policy.course_description %>
       </form>
@@ -46,7 +45,9 @@
       <h3 class="title title-profile">Other Information</h3>
       <!-- Need to convert these into ROR forms -->
       <%= @course_policy.other_information %>
-      <%= link_to 'Edit Profile', edit_course_policy_path, class: 'btn btn-primary' %>
+
+      <br/><br/>
+      <%= link_to 'Edit Profile', edit_course_policy_path, class: 'login-button' %>
     </div>
 
     <script>
