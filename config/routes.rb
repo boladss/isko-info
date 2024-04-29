@@ -18,14 +18,18 @@ Rails.application.routes.draw do
 
   get "/reghelper", to: "pages#reghelper"
 
-  # Department of Computer Science
-  get "/deptcs", to: "pages#deptcs"
-  get "/CS11", to: "pages#CS11"
-  get "/CS12", to: "pages#CS12"
+  # College of Engineering
+  get "/coe", to: "pages#coe" 
+    # Department of Computer Science
+    get "/deptcs", to: "pages#deptcs"
+    get "/CS11", to: "pages#CS11"
+    get "/CS12", to: "pages#CS12"
 
-  # Department of Art Studies
-  get "/deptart", to: "pages#deptart"
-  get "/AS50", to: "pages#AS50"
+  # College of Arts and Letters
+  get "/cal", to: "pages#cal"
+    # Department of Art Studies
+    get "/deptart", to: "pages#deptart"
+    get "/AS50", to: "pages#AS50"
 
   # Department of Filipino and Philippine Literature
   get "/deptfpl", to: "pages#deptfpl"
@@ -49,3 +53,4 @@ Rails.application.routes.draw do
   get '/errorpage', to: "pages#errorpage"
   #get '/errorpage', to: 'errors#database_connection_error'
 end
+ 
