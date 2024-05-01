@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <%= render "sidebar"%>
+    <%= render partial: "layouts/sidebar", locals: { active: 'masterlist' } %>
     <div class="content center-content">
       <h2 class="title">UP Diliman Website Master List</h2>
       <!-- Put contents of masterlist here. -->

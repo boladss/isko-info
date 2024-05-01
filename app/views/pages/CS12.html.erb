@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <%= render "sidebar"%>
+    <%= render partial: "layouts/sidebar", locals: { active: 'reg_helper' } %>
     <div class="content">
       <span><%= link_to "Go back", deptcs_path, class: "sidebar-link back-button"%></span>
       <input class="text-input" id="search-bar" type="text" placeholder="CS 12">

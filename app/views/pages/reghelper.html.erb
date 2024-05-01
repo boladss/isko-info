@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <%= render "sidebar"%>
+    <%= render partial: "layouts/sidebar", locals: { active: 'reg_helper' } %>
     <div class="content center-content">
       <input class="text-input" id="search-bar" type="text" placeholder="Search (e.g., Computer Science)">
       
