@@ -1,0 +1,34 @@
+.popup .overlay{
+    width: 50%;
+    height: 150pt;
+    margin: 0 auto;
+    background-color: white;
+    border: none;
+    border-radius: 15px;
+    box-shadow: 0pt 2pt 4pt hsla(0, 0%, 0%, 20%);
+    font-size: 15pt;
+    text-align: center;
+    color: var(--black);
+    display: none;
+
+}
+
+.popup .content {
+    justify-content: center;
+    transform: scale(0);
+}
+
+.popup.active .overlay {
+    display: block;
+}
+
+.popup.active .content {
+    transition:all 300ms ease-in-out;
+    transform: scale(1);
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
