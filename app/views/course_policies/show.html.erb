@@ -44,7 +44,7 @@
           <div class="button-container">
             <div class="login-button" onclick="togglepopup()">Cancel</div>
               <!-- Replace by the function for course deletion -->
-            <div class="login-button" onclick="togglepopup()">Continue</div> 
+            <%= button_to 'Delete Course', @course_policy, method: :delete, class: "login-button" %>
           </div>
         </div>
       </div>

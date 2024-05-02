@@ -38,9 +38,12 @@ Rails.application.routes.draw do
   get "/appeal_success", to: "pages#appeal_success"
 
   get '/dept_profile', to: "course_policies#index"
+  get '/course_policies/new', to: "course_policies#new", as: :new_course_policy
+  post '/course_policies', to:"course_policies#create", as: :course_policies
   get '/course_policies/:id/edit', to: "course_policies#edit", as: :edit_course_policy 
   get '/course_policies/:id', to: "course_policies#show", as: :course_policy
-  patch '/course_policies/:id', to: "course_policies#update" 
+  patch '/course_policies/:id', to: "course_policies#update"
+  delete '/course_policies/:id', to: "course_policies#destroy" 
   
   post "/home", to: "pages#home"
   post '/logindept', to: "pages#logindept"
