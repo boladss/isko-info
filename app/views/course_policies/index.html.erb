@@ -6,6 +6,21 @@
       <h2 class="title">Edit Profile [Department]</h2>
       <br/> <br/>
 
+      <h3 class="title">Department Wide Policy</h3>
+      <hr>
+      <p> Strictly no teacher's prerogative. Kindly waitlist and email your respective registration emails for registration matters. 
+        Please observe proper email etiquette. Non-compliant emails will not be entertained. </p>
+      <ul>
+        <li>Batch 2020: batch2020reg@gmail.com | Adviser: Sir Zuniga</li>
+        <li>Batch 2021: batch2021reg@gmail.con | Adviser: Maam Ordanel</li>
+        <li>Batch 2022: batch2022reg@gmail.con | Adviser: Maam Juayong</li>
+        <li>Batch 2023: batch2023reg@gmail.con | Adviser: Sir Beltran</li>
+      </ul>
+      <button class="login-button">Edit Department Wide policy</button>
+      <br/> <br/>
+
+      <h3 class="title">Courses</h3>
+      <hr>
       <% @course_policies.each do |course_policy| %>
           <%= link_to course_policy.course_title, course_policy, class: "reg-button" %>
       <% end %>
