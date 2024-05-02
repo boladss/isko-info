@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <%= render partial: "layouts/sidebar", locals: { active: 'reg_helper' } %>
+
+    <div class="content center-content">
+      <% @colleges.each do |college| %>
+          <%= link_to college.name, college, class: "reg-button" %>
+      <% end %>
+    </div>
+  </body>
+</html>
+
