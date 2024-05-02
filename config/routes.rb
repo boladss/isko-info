@@ -43,7 +43,12 @@ Rails.application.routes.draw do
   get '/course_policies/:id/edit', to: "course_policies#edit", as: :edit_course_policy 
   get '/course_policies/:id', to: "course_policies#show", as: :course_policy
   patch '/course_policies/:id', to: "course_policies#update"
-  delete '/course_policies/:id', to: "course_policies#destroy" 
+  delete '/course_policies/:id', to: "course_policies#destroy"
+  
+  get '/dept_list', to: "departments#index"
+  get '/departments/:id', to: "departments#show", as: :department
+  get '/departments/:id/edit', to: "departments#edit", as: :edit_department
+  patch '/departments/:id', to: "departments#update"
   
   post "/home", to: "pages#home"
   post '/logindept', to: "pages#logindept"
