@@ -1,32 +1,13 @@
 <!DOCTYPE html>
 <html>
   <body>
-    <div class="sidebar">
-      <div class="mini-profile">
-        <%= image_tag "default.png", class: "profile-pic" %>
-        <h1 id="name"><%= session[:data]["email"]%></h1>
-        <!-- <h1>José Protacio Rizal Mercado y Alonso Realonda</h1> -->
-      </div>
-
-      <hr class="sidebar-divider"/>
-
-      <div class="links">
-        <span><%= link_to "Dashboard", home_path, class: "sidebar-link"%></span>
-        <span><a href="" class="sidebar-link">My Favorites</a></span>
-        <span><%= link_to "Registration Helper", reghelper_path, class: "sidebar-link active"%></span>
-        <span><%= link_to "Website Masterlist", masterlist_path, class: "sidebar-link"%></span>
-        <span><a href="" class="sidebar-link">User Preferences</a></span>
-        <span><%= link_to "Edit Profile [DEPT]", dept_profile_path, class: "sidebar-link"%></span>
-        
-        <span><%= button_to "Logout", logout_path, class: "sidebar-link"%></span>
-        <span><%= link_to "Go back", reghelper_path, class: "sidebar-link back-button"%></span>
-      </div>
-
+    <%= render partial: "layouts/sidebar", locals: { active: 'reg_helper' } %>
+    <div class="content">
+      <span><%= link_to "Go back", cal_path, class: "sidebar-link back-button"%></span>
+      <input class="text-input" id="search-bar" type="text" placeholder="Department of Filipino and Philippine Literature">
     </div>
     
     <div class="content center-content">
-      <input class="text-input" id="search-bar" type="text" placeholder="Department of Filipino and Philippine Literature">
-
       <div class="course-wrapper">
         <div class="course-container">
           <a href="/FIL40"><button class="reg-button course-button">

@@ -106,7 +106,10 @@ link.reg-button {
 }
 
 .back-button {
-    border: dotted;
+    /* border: dotted; */
+    max-width: 120px;
+    margin: 0;
+    margin-right: 10pt;
 }
 
 /* .back-button {

@@ -18,14 +18,18 @@ Rails.application.routes.draw do
 
   get "/reghelper", to: "pages#reghelper"
 
-  # Department of Computer Science
-  get "/deptcs", to: "pages#deptcs"
-  get "/CS11", to: "pages#CS11"
-  get "/CS12", to: "pages#CS12"
+  # College of Engineering
+  get "/coe", to: "pages#coe" 
+    # Department of Computer Science
+    get "/deptcs", to: "pages#deptcs"
+    get "/CS11", to: "pages#CS11"
+    get "/CS12", to: "pages#CS12"
 
-  # Department of Art Studies
-  get "/deptart", to: "pages#deptart"
-  get "/AS50", to: "pages#AS50"
+  # College of Arts and Letters
+  get "/cal", to: "pages#cal"
+    # Department of Art Studies
+    get "/deptart", to: "pages#deptart"
+    get "/AS50", to: "pages#AS50"
 
   # Department of Filipino and Philippine Literature
   get "/deptfpl", to: "pages#deptfpl"
@@ -34,9 +38,17 @@ Rails.application.routes.draw do
   get "/appeal_success", to: "pages#appeal_success"
 
   get '/dept_profile', to: "course_policies#index"
+  get '/course_policies/new', to: "course_policies#new", as: :new_course_policy
+  post '/course_policies', to:"course_policies#create", as: :course_policies
   get '/course_policies/:id/edit', to: "course_policies#edit", as: :edit_course_policy 
   get '/course_policies/:id', to: "course_policies#show", as: :course_policy
-  patch '/course_policies/:id', to: "course_policies#update" 
+  patch '/course_policies/:id', to: "course_policies#update"
+  delete '/course_policies/:id', to: "course_policies#destroy"
+  
+  get '/dept_list', to: "departments#index"
+  get '/departments/:id', to: "departments#show", as: :department
+  get '/departments/:id/edit', to: "departments#edit", as: :edit_department
+  patch '/departments/:id', to: "departments#update"
   
   post "/home", to: "pages#home"
   post '/logindept', to: "pages#logindept"
@@ -49,3 +61,4 @@ Rails.application.routes.draw do
   get '/errorpage', to: "pages#errorpage"
   #get '/errorpage', to: 'errors#database_connection_error'
 end
+ 

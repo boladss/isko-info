@@ -13,8 +13,27 @@ class CoursePoliciesController < ApplicationController
         redirect_to root_path
     end
 
+    def new
+        @course_policy = CoursePolicy.new()
+    end
+
+    def create
+        @course_policy = CoursePolicy.new(course_policy_params)
+        if @course_policy.save
+            redirect_to @course_policy
+        else  
+            render :new, status: :unprocessable_entity
+        end
+    end
+
     def edit
         @course_policy = CoursePolicy.find(params[:id])
+    end
+    
+    def destroy
+        @course_policy = CoursePolicy.find(params[:id])
+        @course_policy.destroy
+        redirect_to '/dept_profile'
     end
 
     def update

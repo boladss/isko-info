@@ -3,18 +3,17 @@
   <body>
     <%= render partial: "layouts/sidebar", locals: { active: 'profile_dept' } %>
     <div class="content left-content">
-      <h2 class="title">Edit Courses</h2>
+      <h2 class="title">Edit Profile [Department]</h2>
       <br/> <br/>
 
-      <h3 class="title">Courses</h3>
+      <h3 class="title">Departments</h3>
       <hr>
-      <br/>
-      <% @course_policies.each do |course_policy| %>
-          <%= link_to course_policy.course_title, course_policy, class: "reg-button" %>
+      <% @departments.each do |department| %>
+          <%= link_to department.name, department, class: "" %>
       <% end %>
-          <%= link_to 'New Course', new_course_policy_path, class: 'login-button' %>
     </div>
     
+
     <script>
       addEventListener("trix-file-accept", function(event) {
         event.preventDefault();

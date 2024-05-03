@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <%= render partial: "layouts/sidebar", locals: { active: 'profile_dept' } %>
+    <div class="content left-content">
+
+      <h2 class="title"><%= @department.name %> (<%= @department.code %>)</h2>
+
+      <h3 class="title title-profile">Department Policies</h3>
+      <!-- Need to convert these into ROR forms -->
+      <%=  form_with model: @department do |form| %>
+        <%= form.rich_text_area :department_policy%> 
+
+        <br/>
+        <%= form.button class:"login-button"%>
+      <% end %>
+      <br/>
+      <%= link_to "Discard changes", @department, class: "signup" %>
+    </div>
+
+    <script>
+      addEventListener("trix-file-accept", function(event) {
+        event.preventDefault();
+      });
+    </script>
+  </body>
+</html>
+

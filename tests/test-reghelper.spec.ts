@@ -18,9 +18,8 @@ test('reg-helper: view reg-helper', async ({ page }) => {
   await testLoginStudent(page);
   await page.goto('http://localhost:3000/reghelper');
 
-  await expect(page.getByRole('button', { name: 'Department of Computer Science' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Department of Art Studies' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Department of Filipino and' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'College of Engineering' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'College of Arts and Letters' })).toBeVisible();
 });
 
 test('reg-helper: navigation', async ({ page }) => {
@@ -28,7 +27,8 @@ test('reg-helper: navigation', async ({ page }) => {
 
   await page.goto('http://localhost:3000/home');
   await page.getByRole('link', { name: 'Registration Helper' }).click();
-
+  
+  await page.getByRole('button', { name: 'College of Engineering' }).click();
   await page.getByRole('button', { name: 'Department of Computer Science' }).click();
 
   await page.getByRole('button', { name: 'CS11 - 4.0 UNITS' }).click();
@@ -40,16 +40,19 @@ test('reg-helper: navigation', async ({ page }) => {
   await page.getByRole('link', { name: 'Go back' }).click();
   
   await page.getByRole('link', { name: 'Go back' }).click();
+  await page.getByRole('link', { name: 'Go back' }).click();
 
+  await page.getByRole('button', { name: 'College of Arts and Letters' }).click();
   await page.getByRole('button', { name: 'Department of Art Studies' }).click();
+
   await page.getByRole('button', { name: 'AS50 - 3.0 UNITS The Field of' }).click();
   await expect(page.getByText('The Field of Art Studies')).toBeVisible();
   await page.getByRole('link', { name: 'Go back' }).click();
   await page.getByRole('link', { name: 'Go back' }).click();
+  await page.getByRole('link', { name: 'Go back' }).click();
 
-  await expect(page.getByRole('button', { name: 'Department of Art Studies' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Department of Filipino and' })).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Department of Computer Science' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'College of Engineering' })).toBeVisible();
+  await expect(page.getByRole('button', { name: 'College of Arts and Letters' })).toBeVisible();
 });
 
 test('reg-helper: visit embedded Facebook post', async ({ page }) => {

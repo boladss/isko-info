@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <%= render partial: "layouts/sidebar", locals: { active: 'profile_dept' } %>
+    <div class="content left-content">
+
+      <h2 class="title"><%= @department.name %> (<%= @department.code %>)</h2>
+
+      <h3 class="title title-profile">Department Policies</h3>
+      <!-- Need to convert these into ROR forms -->
+      <%= @department.department_policy %> 
+
+      <br/>
+      <div class="button-container">
+        <%= link_to 'Edit Department Policies', edit_department_path, class: 'login-button' %>
+      </div>
+      <!-- <%= link_to "Return to departments", dept_list_path, class: "signup" %> -->
+
+
+      <h3 class="title title-profile">Courses</h3>
+      <br/>
+      <div class="button-container">
+        <%= link_to 'View Courses', dept_profile_path, class: 'login-button' %>
+      </div>
+
+    </div>
+
+
+    <script>
+      addEventListener("trix-file-accept", function(event) {
+        event.preventDefault();
+      });
+    </script>
+  </body>
+</html>
+
