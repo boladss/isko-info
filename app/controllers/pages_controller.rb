@@ -5,14 +5,21 @@ require 'firebase'
 
 class PagesController < ApplicationController
 
-    before_action :set_user_data, only: %i[signup loginstudent logindept]
-    before_action :authenticate_user, except: %i[main signup loginstudent logindept errorpage]    # makes sure na hindi makakapasok sa home page unless logged - in
+    before_action :set_user_data, only: %i[signup loginstudent logindept get_signup get_logindept]
+    before_action :authenticate_user, except: %i[main signup loginstudent logindept errorpage get_signup get_logindept]    # makes sure na hindi makakapasok sa home page unless logged - in
 
     def main
     end
 
-    def signup
+    def get_signup
+        render '/pages/signup'
+    end
 
+    def get_logindept
+        render '/pages/logindept'
+    end
+
+    def signup
         begin
             password_confirmation = params[:password_confirmation]
             username = params[:username]
@@ -52,7 +59,6 @@ class PagesController < ApplicationController
                         redirect_to "/signup"
                         return
                     end
-                    
                     email_name = email.split('@')[0]
                     domain_name = email.split('@')[1]
                     firebase_response = firebase.get("user/emails/" + email_name)
@@ -76,24 +82,23 @@ class PagesController < ApplicationController
             uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=#{Rails.application.credentials.firebase_api_key}")
             response = Net::HTTP.post_form(uri, "username": @username, "email": @email, "password": @password)
             data = JSON.parse(response.body)
-            session[:user_id] = data["localId"]
+            @user = User.new(username: @username, user_type: "student", course_code: "0", firebase_id: data["localId"])
+            @user.save
+            session[:user_id] = @user.id
             session[:username] = @username 
             session[:email] = @email
             session[:password] = @password
             session[:data] = data
+            
             redirect_to "/profilepage", notice: "You have successfully signed up!" if response.is_a?(Net::HTTPSuccess)
             # redirect_to_signup_path, alert: "There was an error signing up. Please try again." if response.is_a?(Net::HTTPClientError)
-        rescue StandardError => e
-            flash[:error] = "Sorry, there was an issue connecting to the authentication service. Please try again later."
-            redirect_to "/errorpage" # Redirect the user to an appropriate page
-            return
+        
         end
         
     end
         
 
     def login
-
         begin
             uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=#{Rails.application.credentials.firebase_api_key}")
             response = Net::HTTP.post_form(uri, "email": @email, "password": @password)
@@ -123,27 +128,31 @@ class PagesController < ApplicationController
         firebase = Firebase::Client.new(firebase_url)
         if email
             begin
-                firebase_response = firebase.get("user/users/" + email)
+                firebase_response = firebase.get("user/department_users/" + email)
                 firebase_response_data = firebase_response.body
             rescue StandardError => e
                 flash[:error] = "Sorry, there was an issue connecting to the authentication service. Please try again later."
                 redirect_to "/errorpage" # Redirect the user to an appropriate page
                 return
-            end
-                
+            end  
             begin
                 uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=#{Rails.application.credentials.firebase_api_key}")
                 response = Net::HTTP.post_form(uri, "email": email, "password": password)
                 data = JSON.parse(response.body)
-                if response.is_a?(Net::HTTPSuccess) 
+                if response.is_a?(Net::HTTPSuccess)
+                    local_part, domain = email.split('@')
+                    domain_name, domain_extension = domain.split('.')
+                    firebase_response = firebase.get("user/emails/" + local_part + "/" + domain_name)
+                    firebase_response_data = firebase_response.body
+                    name = firebase_response_data["username"]
+                    firebase_response = firebase.get("user/department_users/" + name)
+                    firebase_response_data = firebase_response.body
                     session[:email] = email
                     session[:user_id] = data["localId"]
                     session[:data] = data
+                    session[:code] = firebase_response_data["code"]
                     flash[:notice] = "You have successfully logged in!"
-                    redirect_to "/profilepage"
-                elsif !(email.include?("@")) && email.length < 8
-                    flash[:notice] = "Invalid email or password."
-                    redirect_to "/logindept"
+                    redirect_to "/deptprofilepage"
                 elsif firebase_response_data
                     email = firebase_response_data["email"]
                     response = Net::HTTP.post_form(uri, "email": email, "password": password)
@@ -152,8 +161,9 @@ class PagesController < ApplicationController
                         session[:email] = email
                         session[:user_id] = data["localId"]
                         session[:data] = data
+                        session[:code] = firebase_response_data["code"]
                         flash[:notice] = "You have successfully logged in!"
-                        redirect_to "/profilepage"
+                        redirect_to "/deptprofilepage"
                     else
                         flash[:notice] = "Invalid email or password."
                         redirect_to "/logindept"
@@ -191,9 +201,10 @@ class PagesController < ApplicationController
                 uri = URI("https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=#{Rails.application.credentials.firebase_api_key}")
                 response = Net::HTTP.post_form(uri, "email": email, "password": password)
                 data = JSON.parse(response.body)
-                if response.is_a?(Net::HTTPSuccess) 
+                if response.is_a?(Net::HTTPSuccess)
+                    @user = User.find_by(firebase_id: data["localId"])
                     session[:email] = email
-                    session[:user_id] = data["localId"]
+                    session[:user_id] = @user.id
                     session[:data] = data
                     flash[:notice] = "You have successfully logged in!"
                     redirect_to "/profilepage"
@@ -230,6 +241,9 @@ class PagesController < ApplicationController
     def logout
         session.clear
         redirect_to root_path, notice: "You have successfully logged out!"
+    end
+
+    def deptprofilepage
     end
 
 

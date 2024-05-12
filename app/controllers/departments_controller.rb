@@ -8,17 +8,28 @@ class DepartmentsController < ApplicationController
   end
 
   def show
-    @department = Department.find_by(params[:code == "DCS"])
+    @department = Department.find(params[:id])
   rescue ActiveRecord::RecordNotFound
     redirect_to root_path
   end
 
+  def reghelper_show
+    @department = Department.find(params[:id])
+    @course_policies = @department.course_policies
+  end
+
+  def show_course_policies
+    @department = Department.find(params[:id])
+    @course_policies = @department.course_policies
+    render '/course_policies/index_dept'
+  end
+
   def edit
-    @department = Department.find_by(params[:code == "DCS"])
+    @department = Department.find(params[:id])
   end
 
   def update
-    @department = Department.find_by(params[:code == "DCS"])
+    @department = Department.find(params[:id])
     if @department.update(department_params)
         redirect_to @department
     else

@@ -9,5 +9,9 @@ class CoursePolicy < ApplicationRecord
     validates :waitlisting_schedule, presence: true
     validates :cancellation_procedure, presence: true
     validates :other_information, presence: true
-    
+    validates :code, presence: true
+    validates :appeal_count, presence: true
+    has_many :appeals
+    has_many :users, through: :appeals
+    belongs_to :department
 end

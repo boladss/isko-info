@@ -13,8 +13,8 @@
     <span><%= link_to "Registration Helper", reghelper_path, class: "sidebar-link #{'active' if active == 'reg_helper'}"%></span>
     <span><%= link_to "Website Masterlist", masterlist_path, class: "sidebar-link #{'active' if active == 'masterlist'}"%></span>
     <span><a href="" class="sidebar-link sidebar-inactive">User Preferences</a></span>
-    <!-- <span><%= link_to "Edit Profile [DEPT]", dept_profile_path, class: "sidebar-link #{'active' if active == 'profile_dept'}"%></span> -->
-    <%= link_to "Edit Profile [DEPT]", Department.find_by(code: "DCS"), class: "sidebar-link #{'active' if active == 'profile_dept'}" %>
+    
+    <%= link_to "Edit Profile [DEPT]", Department.find_by(code: session[:code]), class: "sidebar-link #{'active' if active == 'profile_dept'}" %>
 
 
     <span><%= button_to "Logout", logout_path, class: "sidebar-link"%></span>

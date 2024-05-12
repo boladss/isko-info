@@ -13,12 +13,22 @@ class CoursePoliciesController < ApplicationController
         redirect_to root_path
     end
 
+    def reghelper_show
+        @user = User.find(session[:user_id])
+        @course_policy = CoursePolicy.find(params[:id])
+        @department = @course_policy.department
+    rescue ActiveRecord::RecordNotFound
+        redirect_to root_path
+    end
+
     def new
         @course_policy = CoursePolicy.new()
     end
 
     def create
-        @course_policy = CoursePolicy.new(course_policy_params)
+        @department = Department.find(params[:id])
+        @course_policy = CoursePolicy.new(course_policy_params.merge("appeal_count" => 0, "code" => @department.code, "department_id" => params[:id]))
+ 
         if @course_policy.save
             redirect_to @course_policy
         else  
@@ -33,7 +43,7 @@ class CoursePoliciesController < ApplicationController
     def destroy
         @course_policy = CoursePolicy.find(params[:id])
         @course_policy.destroy
-        redirect_to '/dept_profile'
+        redirect_to all_course_policies_path(@course_policy.department_id)
     end
 
     def update
@@ -46,7 +56,7 @@ class CoursePoliciesController < ApplicationController
     end
     private
     def course_policy_params
-        params.require(:course_policy).permit(:course_title, :course_description, :prerogative_policy, :waitlisting_schedule, :cancellation_procedure, :other_information)
+        params.require(:course_policy).permit(:course_title, :course_description, :prerogative_policy, :waitlisting_schedule, :cancellation_procedure, :other_information, :code, :appeal_count, :department_id)
     end
 
     def authenticate_user

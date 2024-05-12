@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <%= render partial: "layouts/sidebar", locals: { active: 'reg_helper' } %>
+    <div class="content">
+      <span><%= link_to "Go back", deptart_path, class: "sidebar-link back-button"%></span>
+      <input class="text-input" id="search-bar" type="text" placeholder="AS 50">
+    </div>
+
+    <div class="course-wrapper course-details-wrapper">
+      <div class="course-details-container">
+        <div class="course-heading">Information:</div>
+        <b>Course Title:</b> <%= @course_policy.course_title %> <br/>
+        <b>Description:</b> <%= @course_policy.course_description %> <br/>
+        <b>Prerequisites:</b> lorem ipsum <br/>
+        <b>Classifications and Units:</b> lorem ipsum <br/>
+
+        <div class="course-heading">Offering Department:</div>
+        <div><%= @department.name %> </div>
+
+        <div class="course-heading">Prerog Policy:</div>
+        <div><%= @course_policy.prerogative_policy %></div>
+
+        <div class="course-heading">Waitlisting Schedule:</div>
+        <div><%= @course_policy.waitlisting_schedule %></div>
+
+        <div class="course-heading">Available Slots for All Sections:</div>
+        <div>0 out of <%= @course_policy.appeal_count %> slots</div>
+
+        <%= form_with(model: [@course_policy, @user], url: appeals_path, method: :post) do |form| %>
+        <%= form.submit "Make Appeal", class:"login-button appeal-button" %>
+        <% end %>   
+
+      </div>
+
+      <div class="fb-post">
+        <iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fartstudies.upd%2Fposts%2F866020218648407&show_text=true&width=500" width="500" height="645" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+      </div>
+    </div>
+
+
+  </body>
+</html>
+
