@@ -1,6 +1,6 @@
 # Destroy all existing data first
 ActionText::RichText.delete_all
-Appeals.delete_all
+Appeal.delete_all
 CoursePolicy.delete_all
 User.delete_all
 Department.delete_all

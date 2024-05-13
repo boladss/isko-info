@@ -69,7 +69,8 @@ Rails.application.routes.draw do
   post '/profilepage', to: "pages#profilepage"
   post '/university_colleges/course_policies/:id/appeals', to: "appeals#create", as: :appeals
 
-  
+  get '/userpreferences', to: "pages#userpreferences"
+
   # Databse connection error
   get '/errorpage', to: "pages#errorpage"
   #get '/errorpage', to: 'errors#database_connection_error'
