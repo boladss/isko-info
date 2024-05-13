@@ -9,6 +9,7 @@
 
     <div class="course-wrapper course-details-wrapper">
       <div class="course-details-container">
+
         <div class="course-heading">Information:</div>
         <b>Course Title:</b> <%= @course_policy.course_title %> <br/>
         <b>Description:</b> <%= @course_policy.course_description %> <br/>
@@ -29,6 +30,8 @@
 
         <%= form_with(model: [@course_policy, @user], url: appeals_path, method: :post) do |form| %>
         <%= form.submit "Make Appeal", class:"login-button appeal-button" %>
+        <%= button_tag "Favorite", type: "button", class: "favorite-button", id: "favorite-button" %>
+        
         <% end %>   
 
       </div>
@@ -38,6 +41,17 @@
       </div>
     </div>
 
+    <script>
+      document.getElementById('favorite-button').addEventListener('click', function(event) {
+        var button = event.target;
+        button.classList.toggle('clicked');
+        if (button.classList.contains('clicked')) {
+            button.textContent = 'Favorited';
+        } else {
+            button.textContent = 'Favorite';
+        }
+    });
+    </script>
 
   </body>
 </html>
