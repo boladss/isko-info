@@ -16,6 +16,7 @@ class DepartmentsController < ApplicationController
   def reghelper_show
     @department = Department.find(params[:id])
     @course_policies = @department.course_policies
+    @university_college = @department.university_college
   end
 
   def show_course_policies

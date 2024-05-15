@@ -3,10 +3,10 @@
   <body>
     <%= render partial: "layouts/sidebar", locals: { active: 'reg_helper' } %>
     <div class="content">
-      <span><%= link_to "Go back", coe_path, class: "sidebar-link back-button"%></span>
-      <input class="text-input" id="search-bar" type="text" placeholder="Department of Computer Science">
+      <span><%= link_to "Go back", university_college_path(@university_college), class: "sidebar-link back-button"%></span>
+      <input class="text-input" id="search-bar" type="text" placeholder="<%= @department.name %>">
     </div>
-    
+
     <div class="content center-content">
       <div class="course-wrapper">
         <div class="course-container">

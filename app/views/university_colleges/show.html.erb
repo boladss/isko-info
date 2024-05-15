@@ -2,9 +2,13 @@
 <html>
   <body>  
     <%= render partial: "layouts/sidebar", locals: { active: 'reg_helper' } %>
+    
+    <div class="content">
+      <span><%= link_to "Go back", reghelper_path, class: "sidebar-link back-button"%></span>
+      <input class="text-input" id="search-bar" type="text" placeholder="<%= @university_college.name %>">
+    </div>
+    
     <div class="content center-content">
-      <input class="text-input" id="search-bar" type="text" placeholder="Search (e.g., Computer Science)">
-
       <% @departments.each do |department| %>
       <a href="<%= department_reghelper_path(department) %>">
         <button class="reg-button"><%= department.code %></button>
@@ -12,8 +16,6 @@
       <% end %>
       
     </div>
-
-
 
   </body>
 </html>

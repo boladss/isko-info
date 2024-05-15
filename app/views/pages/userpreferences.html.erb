@@ -8,9 +8,9 @@
             <div id="profile-settings">
                 <div class="input-group">
                     <label for="username">Username:</label>
-                    <% user = User.find(session[:user_id]) %>
+                    <% user = User.find_by(firebase_id: session[:user_id]) %>
                     <input type="text" id="username" value="<%= user.username %>" disabled>
-                </div>
+                </div> 
                 <div class="input-group">
                     <label for="email">Email:</label>
                     <input type="text" id="email" value="<%= session[:data]["email"]%>" disabled>
@@ -24,7 +24,6 @@
             <div id="password-settings">
                 <div class="input-group">
                     <label for="old-password">Old Password:</label>
-
                     <%= password_field_tag :old_password, nil, id: "old-password", disabled: true, class: "password_input"  %>
                 </div>
 
