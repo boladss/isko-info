@@ -1,0 +1,92 @@
+#profile-settings {
+    width: 100%;
+    max-width: 600px;
+    margin: 0; /* Remove auto to align left */
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: left; /* Add this to align text to the left */
+}
+
+#profile-settings label {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 20px;
+    font-weight: bold;
+    width: 100px; /* Adjust this value as needed */
+}
+
+#profile-settings input[type="text"] {
+    font-size: 16px;
+    flex-grow: 1;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+#profile-settings button {
+    color: var(--white-smoke);
+    background-color: var(--maroon);
+    border-radius: 45px;
+    padding: 15px 30px;
+    border: none;
+    font-size: 12pt;
+    text-align: center;
+    text-decoration: none;
+}
+
+#profile-settings button:hover {
+    background-color: var(--light-maroon);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.input-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+#password-settings {
+    width: 100%;
+    max-width: 600px;
+    margin: 0; /* Remove auto to align left */
+    padding: 30px;
+    box-sizing: border-box;
+    text-align: left; /* Add this to align text to the left */
+}
+
+#password-settings label {
+    font-size: 16px;
+    display: block;
+    margin-bottom: 20px;
+    font-weight: bold;
+    width: 150px; /* Adjust this value as needed */
+}
+
+#password-settings button {
+    color: var(--white-smoke);
+    background-color: var(--maroon);
+    border-radius: 45px;
+    padding: 15px 30px;
+    border: none;
+    font-size: 12pt;
+    text-align: center;
+    text-decoration: none;
+}
+
+#password-settings button:hover {
+    background-color: var(--light-maroon);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.password_input {
+    font-size: 16px;
+    flex-grow: 1;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    color: maroon;
+}

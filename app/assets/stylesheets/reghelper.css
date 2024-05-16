@@ -105,6 +105,27 @@ link.reg-button {
     /* pointer-events: none; */
 }
 
+.favorite-button {
+    color: var(--white-smoke);
+    background-color: rgb(210, 155, 17);
+    border-radius: 45px;
+    padding: 15px 30px;
+    border: none;
+    font-size: 12pt;
+    text-align: center;
+    text-decoration: none;
+}
+
+.favorite-button:hover {
+    background-color: rgb(230, 177, 43);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.favorite-button.clicked {
+    background-color: rgb(152, 152, 152); /* Change to the color you want */
+}
+
 .back-button {
     /* border: dotted; */
     max-width: 120px;
