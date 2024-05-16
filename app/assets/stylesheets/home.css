@@ -48,7 +48,7 @@ button.sidebar-link {
   color: var(--white-smoke);
 }
 
-.sidebar-inactive {
+.sidebar-inactive:disabled {
   color: gray;
   cursor: not-allowed;
 }

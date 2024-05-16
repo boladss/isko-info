@@ -8,16 +8,22 @@
   <hr class="sidebar-divider"/>
 
   <div class="links">
-    <span><%= link_to "Dashboard", home_path, class: "sidebar-link #{'active' if active == 'dashboard'}"%></span>
-    <span><a href="" class="sidebar-link sidebar-inactive">My Favorites</a></span>
+    <% if session[:code].present? %>
+      <span><%= button_to "Dashboard", home_path, class: "sidebar-link sidebar-inactive", disabled: true %></span>
+    <% else %>
+      <span><%= link_to "Dashboard", home_path, class: "sidebar-link #{'active' if active == 'dashboard'}"%></span>
+    <% end %>
+
+    <%# <span><button href="" class="sidebar-link sidebar-inactive">My Favorites</button></span> %>
     <span><%= link_to "Registration Helper", reghelper_path, class: "sidebar-link #{'active' if active == 'reg_helper'}"%></span>
     <span><%= link_to "Website Masterlist", masterlist_path, class: "sidebar-link #{'active' if active == 'masterlist'}"%></span>
+
     <% if session[:code].present? %>
-      <%= link_to "User Preferences", request.original_url, class: "sidebar-link sidebar-inactive"%>
-      <%= link_to "Edit Profile [DEPT]", Department.find_by(code: session[:code]), class: "sidebar-link #{'active' if active == 'profile_dept'}" %>
+      <span><%= button_to "User Preferences", request.original_url, class: "sidebar-link sidebar-inactive", disabled: true %></span>
+      <span><%= link_to "Edit Profile [DEPT]", Department.find_by(code: session[:code]), class: "sidebar-link #{'active' if active == 'profile_dept'}" %></span>
     <% else %>
-      <%= link_to "User Preferences", userpreferences_path, class: "sidebar-link #{'active' if active == 'userpreferences'}" %>
-      <%= link_to "Edit Profile [DEPT]", request.original_url, class: "sidebar-link sidebar-inactive" %>
+      <span><%= link_to "User Preferences", userpreferences_path, class: "sidebar-link #{'active' if active == 'userpreferences'}" %></span>
+      <span><%= button_to "Edit Profile [DEPT]", request.original_url, class: "sidebar-link sidebar-inactive", disabled: true %></span>
     <% end %>
     
     

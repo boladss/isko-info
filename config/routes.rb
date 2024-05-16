@@ -14,35 +14,14 @@ Rails.application.routes.draw do
   get '/loginstudent', to: "pages#loginstudent"
   get '/profilepage', to: "pages#profilepage"
   
-
-
   # Department routes
   get '/deptprofilepage', to: "pages#deptprofilepage"
   get '/logindept', to: "pages#get_logindept"
   post '/logindept', to: "pages#logindept"
 
-
-  # College of Engineering
-  get "/coe", to: "pages#coe" 
-    # Department of Computer Science
-    get "/deptcs", to: "pages#deptcs"
-    get "/CS11", to: "pages#CS11"
-    get "/CS12", to: "pages#CS12"
-
-  # College of Arts and Letters
-  get "/cal", to: "pages#cal"
-  # Department of Art Studies
-  get "/deptart", to: "pages#deptart"
-  get "/AS50", to: "pages#AS50"
-
-  # Department of Filipino and Philippine Literature
-  get "/deptfpl", to: "pages#deptfpl"
-  get "/FIL40", to: "pages#FIL40"
-
-  get "/appeal_success", to: "pages#appeal_success"
-
-  get '/dept_profile', to: "course_policies#index"
+  # Reghelper navigation
   
+  # Course level
   get 'department/:id/course_policies/new', to: "course_policies#new", as: :new_course_policy
   post 'department/:id/course_policies', to:"course_policies#create", as: :course_policies
   get '/course_policies/:id/edit', to: "course_policies#edit", as: :edit_course_policy 
@@ -50,12 +29,14 @@ Rails.application.routes.draw do
   patch '/course_policies/:id', to: "course_policies#update"
   delete '/course_policies/:id', to: "course_policies#destroy"
   
+  # Department level
   get '/dept_list', to: "departments#index"
   get '/departments/:id', to: "departments#show", as: :department
   get '/departments/:id/edit', to: "departments#edit", as: :edit_department
   get '/departments/:id/course_policies', to: "departments#show_course_policies", as: :all_course_policies
   patch '/departments/:id', to: "departments#update"
   
+  # College level
   get '/reghelper', to: "university_colleges#index"
   get '/university_colleges/:id', to: "university_colleges#show", as: :university_college
   get '/university_colleges/departments/:id', to: "departments#reghelper_show", as: :department_reghelper
@@ -74,5 +55,8 @@ Rails.application.routes.draw do
   # Databse connection error
   get '/errorpage', to: "pages#errorpage"
   #get '/errorpage', to: 'errors#database_connection_error'
+
+  # Catch all for invalid routes, reroutes to root
+  get '*path' => redirect('/')
+   
 end
- 
