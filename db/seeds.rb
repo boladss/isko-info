@@ -23,6 +23,8 @@ Department.create(code: "DFPP", name: "Departamento ng Filipino at Panitikan ng 
 # Create dummy data for CoursePolicies
 CoursePolicy.create(course_title: "CS 11", course_description: "Computer Programming I", code: "DCS", department_id: 1, remaining_slots: 25, total_slots: 100, prerogative_policy: "lorem ipsum", waitlisting_schedule: "lorem ipsum", cancellation_procedure: "lorem ipsum", other_information: "lorem ipsum")
 CoursePolicy.create(course_title: "CS 12", course_description: "Computer Programming II", code: "DCS", department_id: 1, remaining_slots: 0, total_slots: 50, prerogative_policy: "lorem ipsum", waitlisting_schedule: "lorem ipsum", cancellation_procedure: "lorem ipsum", other_information: "lorem ipsum")
+CoursePolicy.create(course_title: "CS 145", course_description: "Computer Networks", code: "DCS", department_id: 1, remaining_slots: 10, total_slots: 100, prerogative_policy: "lorem ipsum", waitlisting_schedule: "lorem ipsum", cancellation_procedure: "lorem ipsum", other_information: "lorem ipsum")
+CoursePolicy.create(course_title: "CS 192", course_description: "Software Engineering II", code: "DCS", department_id: 1, remaining_slots: 0, total_slots: 50, prerogative_policy: "lorem ipsum", waitlisting_schedule: "lorem ipsum", cancellation_procedure: "lorem ipsum", other_information: "lorem ipsum")
 CoursePolicy.create(course_title: "Art Stud 1", course_description: "The Field of Art Studies", code: "DAS", department_id: 2, remaining_slots: 0, total_slots: 50, prerogative_policy: "lorem ipsum", waitlisting_schedule: "lorem ipsum", cancellation_procedure: "lorem ipsum", other_information: "lorem ipsum")
 CoursePolicy.create(course_title: "FIL 40", course_description: "Wika, Kultura, at Lipunan", code: "DFPP", department_id: 3, remaining_slots: 0, total_slots: 200, prerogative_policy: "lorem ipsum", waitlisting_schedule: "lorem ipsum", cancellation_procedure: "lorem ipsum", other_information: "lorem ipsum")
 
@@ -32,3 +34,4 @@ User.create(username: "antonnnn",  user_type: "student",  course_code: "0",  fir
 User.create(username: "gljuganas",  user_type: "student",  course_code: "0",  firebase_id: "8KRAVfBS6lSPai1Jh8sgPf4miRG2")
 User.create(username: "JamesDcy",  user_type: "student",  course_code: "0",  firebase_id: "CGrWakH6EGNooxdnTB4uAqzMzTy2")
 User.create(username: "nonrepudiation",  user_type: "student",  course_code: "0",  firebase_id: "HBBUATakLEYcJvLjYK7RTDYsvpe2")
+User.create(username: "usertest",  user_type: "student",  course_code: "0",  firebase_id: "I9bHKQqofIU4fYCBAtySl6w1g4u1")

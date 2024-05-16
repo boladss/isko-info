@@ -11,7 +11,7 @@
     <div class="content center-content">
       <% @departments.each do |department| %>
       <a href="<%= department_reghelper_path(department) %>">
-        <button class="reg-button"><%= department.code %></button>
+        <button class="reg-button"><%= department.name %></button>
       </a>
       <% end %>
       
