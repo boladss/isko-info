@@ -14,7 +14,9 @@ class CoursePoliciesController < ApplicationController
     end
 
     def reghelper_show
-        @user = User.find(session[:user_id])
+        if session[:type] == "student"
+            @user = User.find(session[:user_id])
+        end
         @course_policy = CoursePolicy.find(params[:id])
         @department = @course_policy.department
     # rescue ActiveRecord::RecordNotFound

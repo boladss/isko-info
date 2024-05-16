@@ -19,6 +19,14 @@ class PagesController < ApplicationController
         render '/pages/logindept'
     end
 
+    def userpreferences
+        if session[:type] = "student"
+            @user = User.find(session[:user_id])
+        else
+            @department = Department.find_by(code: session[:code])
+        end
+    end
+
     def signup
         begin
             password_confirmation = params[:password_confirmation]
@@ -147,6 +155,7 @@ class PagesController < ApplicationController
                     name = firebase_response_data["username"]
                     firebase_response = firebase.get("user/department_users/" + name)
                     firebase_response_data = firebase_response.body
+                    session[:type] = "department"
                     session[:email] = email
                     session[:user_id] = data["localId"]
                     session[:data] = data
@@ -158,6 +167,7 @@ class PagesController < ApplicationController
                     response = Net::HTTP.post_form(uri, "email": email, "password": password)
                     data = JSON.parse(response.body)
                     if response.is_a?(Net::HTTPSuccess)
+                        session[:type] = "department"
                         session[:email] = email
                         session[:user_id] = data["localId"]
                         session[:data] = data
@@ -203,6 +213,8 @@ class PagesController < ApplicationController
                 data = JSON.parse(response.body)
                 if response.is_a?(Net::HTTPSuccess)
                     @user = User.find_by(firebase_id: data["localId"])
+                    session[:type] = "student"
+                    session[:firebase_id] = data["localId"]
                     session[:email] = email
                     session[:user_id] = @user.id
                     session[:data] = data
@@ -217,6 +229,8 @@ class PagesController < ApplicationController
                     data = JSON.parse(response.body)
                     if response.is_a?(Net::HTTPSuccess)
                         @user = User.find_by(firebase_id: data["localId"])
+                        session[:type] = "student"
+                        session[:firebase_id] = data["localId"]
                         session[:email] = email
                         session[:user_id] = @user.id
                         session[:data] = data

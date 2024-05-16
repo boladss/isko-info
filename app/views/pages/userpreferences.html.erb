@@ -8,8 +8,12 @@
             <div id="profile-settings">
                 <div class="input-group">
                     <label for="username">Username:</label>
-                    <% user = User.find_by(firebase_id: session[:user_id]) %>
-                    <input type="text" id="username" value="<%= user.username %>" disabled>
+                    <% if session[:type] == "student" %>
+                    <input type="text" id="username" value="<%= @user.username %>" disabled>
+                    <% end %>
+                    <% if session[:type] == "department" %>
+                    <input type="text" id="username" value="<%= @department.name %>" disabled>
+                     <% end %>
                 </div> 
                 <div class="input-group">
                     <label for="email">Email:</label>

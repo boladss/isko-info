@@ -27,11 +27,11 @@
 
         <div class="course-heading">Available Slots for All Sections:</div>
         <div>0 out of <%= @course_policy.appeal_count %> slots</div>
-
+        <% if session[:type] == "student" %>
         <%= form_with(model: [@course_policy, @user], url: appeals_path, method: :post) do |form| %>
         <%= form.submit "Make Appeal", class:"login-button appeal-button" %>
         <%= button_tag "Favorite", type: "button", class: "favorite-button", id: "favorite-button" %>
-        
+        <% end %>   
         <% end %>   
 
       </div>
