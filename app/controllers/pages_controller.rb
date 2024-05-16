@@ -217,7 +217,7 @@ class PagesController < ApplicationController
                     data = JSON.parse(response.body)
                     if response.is_a?(Net::HTTPSuccess)
                         session[:email] = email
-                        session[:user_id] = data["localId"]
+                        session[:user_id] = @user.id
                         session[:data] = data
                         flash[:notice] = "You have successfully logged in!"
                         redirect_to "/profilepage"
