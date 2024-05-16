@@ -25,29 +25,29 @@ test('reg-helper: view reg-helper', async ({ page }) => {
 test('reg-helper: navigation', async ({ page }) => {
   await testLoginStudent(page);
 
-  await page.goto('http://localhost:3000/home');
-  await page.getByRole('link', { name: 'Registration Helper' }).click();
+  await page.goto('http://localhost:3000/reghelper');
   
   await page.getByRole('button', { name: 'College of Engineering' }).click();
   await page.getByRole('button', { name: 'Department of Computer Science' }).click();
 
-  await page.getByRole('button', { name: 'CS11 - 4.0 UNITS' }).click();
-  await expect(page.getByText('Computer Programming I')).toBeVisible();
+  await page.getByRole('button', { name: 'CS 11 Computer Programming I' }).click();
+  await expect(page.getByText('Description: Computer Programming I')).toBeVisible();
   await page.getByRole('link', { name: 'Go back' }).click();
 
-  await page.getByRole('button', { name: 'CS12 - 4.0 UNITS' }).click();
-  await expect(page.getByText('Computer Programming II')).toBeVisible();
+  await page.getByRole('button', { name: 'CS 12 Computer Programming II' }).click();
+  await expect(page.getByText('Description: Computer Programming II')).toBeVisible();
   await page.getByRole('link', { name: 'Go back' }).click();
-  
+
   await page.getByRole('link', { name: 'Go back' }).click();
   await page.getByRole('link', { name: 'Go back' }).click();
 
   await page.getByRole('button', { name: 'College of Arts and Letters' }).click();
   await page.getByRole('button', { name: 'Department of Art Studies' }).click();
 
-  await page.getByRole('button', { name: 'AS50 - 3.0 UNITS The Field of' }).click();
-  await expect(page.getByText('The Field of Art Studies')).toBeVisible();
+  await page.getByRole('button', { name: 'Art Stud 1 The Field of Art' }).click();
+  await expect(page.getByText('Description: The Field of Art Studies')).toBeVisible();
   await page.getByRole('link', { name: 'Go back' }).click();
+
   await page.getByRole('link', { name: 'Go back' }).click();
   await page.getByRole('link', { name: 'Go back' }).click();
 
@@ -57,7 +57,10 @@ test('reg-helper: navigation', async ({ page }) => {
 
 test('reg-helper: visit embedded Facebook post', async ({ page }) => {
   await testLoginStudent(page);
-  await page.goto('http://localhost:3000/deptcs');
+  await page.goto('http://localhost:3000/reghelper');
+  
+  await page.getByRole('button', { name: 'College of Engineering' }).click();
+  await page.getByRole('button', { name: 'Department of Computer Science' }).click();
 
   await expect(page.frameLocator('iframe').getByText('UP Diliman Department of Computer Science')).toBeVisible();
   await expect(page.frameLocator('iframe').getByText('The Department of Computer Science is proud to announce')).toBeVisible();
@@ -71,19 +74,52 @@ test('reg-helper: visit embedded Facebook post', async ({ page }) => {
 });
 
 test('reg-helper: appeal', async ({ page }) => {
+  async function navToDCS() {
+    await page.goto('http://localhost:3000/reghelper');
+    await page.getByRole('button', { name: 'College of Engineering' }).click();
+    await page.getByRole('button', { name: 'Department of Computer Science' }).click();
+  }
+  
   await testLoginStudent(page);
+  await navToDCS();
 
-  // CS 11 & AS 50 simulates class that has NO MORE SLOTS
-  await page.goto('http://localhost:3000/CS11');
-  await page.getByRole('button', { name: 'Request for Appeal' }).click();
-  await expect(page.getByText('successfully submitted')).toBeVisible();
+  // CS 11 & simulates class with slots
+  await page.getByRole('button', { name: 'CS 11 Computer Programming I' }).click();
+  await expect(page.getByText('Make Appeal')).not.toBeVisible();
+  await expect(page.locator('body')).not.toContainText('students appealing for additional slots.');
 
-  await page.goto('http://localhost:3000/AS50');
-  await page.getByRole('button', { name: 'Request for Appeal' }).click();
-  await expect(page.getByText('successfully submitted')).toBeVisible();
+  // CS 12 simulates class that has NO MORE SLOTS
+  await page.getByRole('link', { name: 'Go back' }).click();
+  await page.getByRole('button', { name: 'CS 12 Computer Programming II' }).click();
 
-  // CS 12 simulates class that STILL HAS SLOTS
-  await page.goto('http://localhost:3000/CS12');
-  await expect(page.getByText('5 out of 115 slots')).toBeVisible();
-  await expect(page.getByRole('button', { name: 'Request for Appeal' })).toBeDisabled();
+  await expect(page.locator('body')).toContainText('students appealing for additional slots.');
+  await expect(page.getByRole('button', { name: 'Make Appeal' })).toBeVisible();
+  await page.getByRole('button', { name: 'Make Appeal' }).click();
+  await expect(page.getByRole('button', { name: 'Unsubmit Appeal' })).toBeVisible();
+  await page.getByRole('button', { name: 'Logout' }).click();
+
+  await testLoginStudent(page);
+  await navToDCS();
+  await page.getByRole('button', { name: 'CS 12 Computer Programming II' }).click();
+  await expect(page.getByRole('button', { name: 'Unsubmit Appeal' })).toBeVisible();
+  await page.getByRole('button', { name: 'Unsubmit Appeal' }).click();
+  await expect(page.getByRole('button', { name: 'Make Appeal' })).toBeVisible();
+});
+
+test('reg-helper: favorite-ui', async ({ page }) => {
+  await testLoginStudent(page);
+  await page.goto('http://localhost:3000/reghelper');
+  // await page.getByRole('img').nth(1).click();
+
+  await page.getByRole('button', { name: 'College of Engineering' }).click();
+  // await page.getByRole('img').nth(1).click();
+
+  await page.getByRole('button', { name: 'Department of Computer Science' }).click();
+  // await page.getByRole('img').nth(1).click();
+
+  await page.getByRole('button', { name: 'CS 11 Computer Programming I' }).click();
+  await page.getByRole('button', { name: 'Favorite' }).click();
+  await expect(page.getByRole('button', { name: 'Favorited' })).toBeVisible();
+  await page.getByRole('button', { name: 'Favorited' }).click();
+  await expect(page.getByRole('button', { name: 'Favorite' })).toBeVisible();
 });

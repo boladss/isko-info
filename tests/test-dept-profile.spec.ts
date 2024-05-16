@@ -4,38 +4,40 @@ import { test, expect } from '@playwright/test';
 // These features rely on a LOCAL course policy database.
 // These tests may fail depending on the contents of the database.
 
-const USERNAME = "usertest";
-const EMAIL = "user@test.com";
-const PASSWORD = "password1234";
+// const USERNAME = "dcs";
+const EMAIL = "dcs@gmail.com";
+const PASSWORD = "SuperMage1"; // thank u fadri
 
-async function testLoginStudent(page) {
-  await page.goto('http://localhost:3000/loginstudent');
+async function testLoginDepartment(page) {
+  await page.goto('http://localhost:3000/logindept');
 
-  await page.getByPlaceholder('Email or username').click();
-  await page.getByPlaceholder('Email or username').fill(USERNAME); // Existing user in database used in test cases
-  await page.getByPlaceholder('Email or username').press('Enter');
+  await page.getByPlaceholder('Email').click();
+  await page.getByPlaceholder('Email').fill(EMAIL); // Existing user in database used in test cases
+  await page.getByPlaceholder('Email').press('Enter');
   await page.getByPlaceholder('Password').fill(PASSWORD);
   await page.getByPlaceholder('Password').press('Enter');
 }
 
-test('dept-profile: view editable profiles', async ({ page }) => {
+test('dept-profile: view courses', async ({ page }) => {
+  await testLoginDepartment(page);
 
-  await testLoginStudent(page);
-  await page.goto('http://localhost:3000/dept_profile');
-  await expect(page.getByRole('link', { name: 'CS 192' })).toBeVisible();
-  await expect(page.getByRole('link', { name: 'CS 145' })).toBeVisible();
+  await page.getByRole('link', { name: 'Profile' }).click();
+  await page.getByRole('link', { name: 'View Courses' }).click();
 
   await page.getByRole('link', { name: 'CS 192' }).click();
   await expect(page.getByText('Software Engineering II')).toBeVisible();
+  await expect(page.getByText('students appealing for additional slots.')).toBeVisible();
 
-  await page.goto('http://localhost:3000/dept_profile');
+  await page.getByRole('link', { name: 'Return to courses' }).click();
   await page.getByRole('link', { name: 'CS 145' }).click();
   await expect(page.getByText('Computer Networks')).toBeVisible();
+  await expect(page.getByText('students appealing for additional slots.')).not.toBeVisible();
 });
 
 test('dept-profile: edit profiles', async ({ page }) => {
-  await testLoginStudent(page);
-  await page.goto('http://localhost:3000/dept_profile');
+  await testLoginDepartment(page);
+  await page.getByRole('link', { name: 'Profile' }).click();
+  await page.getByRole('link', { name: 'View Courses' }).click();
   await page.getByRole('link', { name: 'CS 192' }).click();
   await page.getByRole('link', { name: 'Edit Course', exact: true }).click();
   await page.locator('#course_policy_prerogative_policy').click();
@@ -43,7 +45,6 @@ test('dept-profile: edit profiles', async ({ page }) => {
   await page.locator('#course_policy_prerogative_policy').fill('Inputting test prerogative policy...');
   await page.getByRole('button', { name: 'Update Course policy' }).click();
   await expect(page.getByText('Inputting test prerogative')).toBeVisible();
-
 
   await page.getByRole('link', { name: 'Edit Course', exact: true }).click();
   await page.getByText('Inputting test prerogative').click();
@@ -56,8 +57,9 @@ test('dept-profile: edit profiles', async ({ page }) => {
 });
 
 test('dept-profile: discard edits', async ({ page }) => {
-  await testLoginStudent(page);
-  await page.goto('http://localhost:3000/dept_profile');
+  await testLoginDepartment(page);
+  await page.getByRole('link', { name: 'Profile' }).click();
+  await page.getByRole('link', { name: 'View Courses' }).click();
   await page.getByRole('link', { name: 'CS 145' }).click();
   await page.getByRole('link', { name: 'Edit Course', exact: true }).click();
   await page.locator('#course_policy_other_information').click();
@@ -68,11 +70,9 @@ test('dept-profile: discard edits', async ({ page }) => {
 });
 
 test('dept-profile: update and discard department policy', async ({ page }) => {
-  await testLoginStudent(page);
-  await page.goto('http://localhost:3000/home');
-
+  await testLoginDepartment(page);
+  await page.getByRole('link', { name: 'Profile' }).click();
   // Update
-  await page.getByRole('link', { name: 'Edit Profile [DEPT]' }).click();
   await page.getByRole('link', { name: 'Edit Department Policies' }).click();
   await page.locator('#department_department_policy').click();
   await page.locator('#department_department_policy').press('Control+a');
@@ -97,9 +97,8 @@ test('dept-profile: update and discard department policy', async ({ page }) => {
 });
 
 test('dept-profile: add and delete courses', async ({ page }) => {
-  await testLoginStudent(page);
-  await page.goto('http://localhost:3000/home');
-  await page.getByRole('link', { name: 'Edit Profile [DEPT]' }).click();
+  await testLoginDepartment(page);
+  await page.getByRole('link', { name: 'Profile' }).click();
   await page.getByRole('link', { name: 'View Courses' }).click();
   await page.getByRole('link', { name: 'New Course' }).click();
   await page.locator('#course_policy_course_title').click();
