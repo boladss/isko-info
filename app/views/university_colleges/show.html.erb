@@ -9,13 +9,25 @@
     </div>
     
     <div class="content center-content">
-      <% @departments.each do |department| %>
-      <a href="<%= department_reghelper_path(department) %>">
-        <button class="reg-button"><%= department.name %></button>
-      </a>
-      <% end %>
-      
+      <div class="colldept-container">
+        <% @departments.each do |department| %>
+        <%= image_tag "favestar0.png", class: "right-image2", style: "border: none;", onclick: "toggleImage(this)" %>
+        <a href="<%= department_reghelper_path(department) %>">
+          <button class="reg-button"><%= department.name %></button>
+        </a>
+        <% end %>
+      </div>
     </div>
+
+    <script>
+          function toggleImage(image) {
+            if (image.src.match('favestar0')) {
+              image.src = '/assets/favestar1.png'; // Change to the path of favestar1.png
+            } else {
+              image.src = '/assets/favestar0.png'; // Change to the path of favestar0.png
+            }
+          }
+    </script>
 
   </body>
 </html>

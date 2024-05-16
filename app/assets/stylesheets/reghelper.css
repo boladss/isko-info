@@ -13,6 +13,7 @@
     text-align: left;
     color: var(--maroon);
     transition: background 0.3s ease, color 0.3s ease;
+    position: relative;
 }
 
 link.reg-button {
@@ -36,10 +37,27 @@ link.reg-button {
     width: calc(100% - 520px);
 }
 
+.colldept-container {
+    position: relative;
+    flex-direction: column;
+    min-width: 200pt;
+}
+
 .right-image {
     position: absolute;
     z-index: 1;
     right: 10px;
+    width: 65px; /* Adjust as needed */
+    height: auto; /* Keeps aspect ratio */
+    transform: translateY(+40%);
+    transition: transform 0.3s ease-in-out; /* Smooth transform transition */
+    cursor: pointer; /* Changes the cursor to a hand when hovered */
+}
+
+.right-image2 {
+    position: absolute;
+    right: 10px;
+    z-index: 1;
     width: 65px; /* Adjust as needed */
     height: auto; /* Keeps aspect ratio */
     transform: translateY(+40%);
