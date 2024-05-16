@@ -19,6 +19,7 @@ class CoursePoliciesController < ApplicationController
         end
         @course_policy = CoursePolicy.find(params[:id])
         @department = @course_policy.department
+        
     # rescue ActiveRecord::RecordNotFound
     #     redirect_to root_path
     end
