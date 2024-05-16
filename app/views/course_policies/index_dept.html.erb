@@ -12,7 +12,12 @@
       <% @course_policies.each do |course_policy| %>
           <%= link_to course_policy.course_title, course_policy, class: "reg-button" %>
       <% end %>
-          <%= link_to 'New Course', new_course_policy_path, class: 'login-button' %>
+      <%= link_to 'New Course', new_course_policy_path, class: 'login-button' %>
+
+      <br/>
+      <br/>
+      <br/>
+      <%= link_to "Return to profile", @department, class: "signup" %>
     </div>
     
     <script>
