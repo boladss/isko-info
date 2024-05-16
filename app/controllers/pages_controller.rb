@@ -92,6 +92,8 @@ class PagesController < ApplicationController
             data = JSON.parse(response.body)
             @user = User.new(username: @username, user_type: "student", course_code: "0", firebase_id: data["localId"])
             @user.save
+            session[:firebase_id] = @user.firebase_id
+            session[:type] = "student"
             session[:user_id] = @user.id
             session[:username] = @username 
             session[:email] = @email
