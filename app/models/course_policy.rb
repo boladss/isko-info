@@ -10,7 +10,9 @@ class CoursePolicy < ApplicationRecord
     validates :cancellation_procedure, presence: true
     validates :other_information, presence: true
     validates :code, presence: true
-    validates :appeal_count, presence: true
+    # validates :appeal_count, presence: true
+    validates :remaining_slots, presence: true
+    validates :total_slots, presence: true
     has_many :appeals
     has_many :users, through: :appeals
     belongs_to :department

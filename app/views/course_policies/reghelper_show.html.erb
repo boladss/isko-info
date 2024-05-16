@@ -26,20 +26,29 @@
         <div><%= @course_policy.waitlisting_schedule %></div>
 
         <div class="course-heading">Available Slots for All Sections:</div>
-        <div><%= @course_policy.appeals.count %> out of <%= @course_policy.appeal_count %> slots</div>
+
+        <div><%= @course_policy.remaining_slots %> out of <%= @course_policy.total_slots %> slots</div>
+        
+        
+        <% if @course_policy.remaining_slots <= 0 %>
+          <div>There are currently <%= @course_policy.appeals.count %> students appealing for additional slots.</div>
+        <% end %>
+
         <% if session[:type] == "student" %>
-          <% if @course_policy.appeals.exists?(user_id: @user.id) %>
-            <%= form_with(model: [@course_policy, @user], url: appeals_path, method: :post) do |form| %>
-            <%= form.submit "Unsubmit Appeal", class:"login-button appeal-button" %>
-            <%= button_tag "Favorite", type: "button", class: "favorite-button", id: "favorite-button" %>
+          <% if @course_policy.remaining_slots <= 0 %>
+            <% if @course_policy.appeals.exists?(user_id: @user.id) %>
+              <%= form_with(model: [@course_policy, @user], url: appeals_path, method: :post) do |form| %>
+              <%= form.submit "Unsubmit Appeal", class:"login-button appeal-button" %>
+              <% end %> 
+            <% else %>
+              <%= form_with(model: [@course_policy, @user], url: appeals_path, method: :post) do |form| %>
+              <%= form.submit "Make Appeal", class:"login-button appeal-button" %>
+              <% end %> 
             <% end %> 
-          <% else %>
-            <%= form_with(model: [@course_policy, @user], url: appeals_path, method: :post) do |form| %>
-            <%= form.submit "Make Appeal", class:"login-button appeal-button" %>
-            <%= button_tag "Favorite", type: "button", class: "favorite-button", id: "favorite-button" %>
-            <% end %> 
-          <% end %> 
+          <% end %>
+          <%= button_tag "Favorite", type: "button", class: "favorite-button", id: "favorite-button" %>
         <% end %>    
+        
 
       </div>
 

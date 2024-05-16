@@ -30,7 +30,7 @@ class CoursePoliciesController < ApplicationController
 
     def create
         @department = Department.find(params[:id])
-        @course_policy = CoursePolicy.new(course_policy_params.merge("appeal_count" => 0, "code" => @department.code, "department_id" => params[:id]))
+        @course_policy = CoursePolicy.new(course_policy_params.merge("remaining_slots" => 100, "total_slots" => 100, "code" => @department.code, "department_id" => params[:id]))
  
         if @course_policy.save
             redirect_to @course_policy
@@ -59,7 +59,7 @@ class CoursePoliciesController < ApplicationController
     end
     private
     def course_policy_params
-        params.require(:course_policy).permit(:course_title, :course_description, :prerogative_policy, :waitlisting_schedule, :cancellation_procedure, :other_information, :code, :appeal_count, :department_id)
+        params.require(:course_policy).permit(:course_title, :course_description, :prerogative_policy, :waitlisting_schedule, :cancellation_procedure, :other_information, :code, :remaining_slots, :total_slots, :department_id)
     end
 
     def authenticate_user
