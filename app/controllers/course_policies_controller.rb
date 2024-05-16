@@ -14,7 +14,7 @@ class CoursePoliciesController < ApplicationController
     end
 
     def reghelper_show
-        @user = User.find_by(firebase_id: session[:user_id])
+        @user = User.find(session[:user_id])
         @course_policy = CoursePolicy.find(params[:id])
         @department = @course_policy.department
     # rescue ActiveRecord::RecordNotFound

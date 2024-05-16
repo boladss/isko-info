@@ -216,6 +216,7 @@ class PagesController < ApplicationController
                     response = Net::HTTP.post_form(uri, "email": email, "password": password)
                     data = JSON.parse(response.body)
                     if response.is_a?(Net::HTTPSuccess)
+                        @user = User.find_by(firebase_id: data["localId"])
                         session[:email] = email
                         session[:user_id] = @user.id
                         session[:data] = data
