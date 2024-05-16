@@ -29,6 +29,7 @@ class PagesController < ApplicationController
 
     def signup
         begin
+            session[:type] == "student"
             password_confirmation = params[:password_confirmation]
             username = params[:username]
             email = params[:email]

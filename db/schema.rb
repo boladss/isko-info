@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_12_032614) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_16_140836) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -70,9 +70,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_12_032614) do
     t.text "course_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "appeal_count"
     t.string "code"
     t.integer "department_id"
+    t.integer "remaining_slots"
+    t.integer "total_slots"
     t.index ["department_id"], name: "index_course_policies_on_department_id"
   end
 
