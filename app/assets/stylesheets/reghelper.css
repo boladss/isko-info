@@ -13,6 +13,7 @@
     text-align: left;
     color: var(--maroon);
     transition: background 0.3s ease, color 0.3s ease;
+    position: relative;
 }
 
 link.reg-button {
@@ -30,9 +31,42 @@ link.reg-button {
 }
 
 .course-container {
+    position: relative;
     flex-direction: column;
     min-width: 200pt;
     width: calc(100% - 520px);
+}
+
+.colldept-container {
+    position: relative;
+    flex-direction: column;
+    min-width: 200pt;
+}
+
+.right-image {
+    position: absolute;
+    z-index: 1;
+    right: 10px;
+    width: 65px; /* Adjust as needed */
+    height: auto; /* Keeps aspect ratio */
+    transform: translateY(+40%);
+    transition: transform 0.3s ease-in-out; /* Smooth transform transition */
+    cursor: pointer; /* Changes the cursor to a hand when hovered */
+}
+
+.right-image2 {
+    position: absolute;
+    right: 10px;
+    z-index: 1;
+    width: 65px; /* Adjust as needed */
+    height: auto; /* Keeps aspect ratio */
+    transform: translateY(+40%);
+    transition: transform 0.3s ease-in-out; /* Smooth transform transition */
+    cursor: pointer; /* Changes the cursor to a hand when hovered */
+}
+
+.right-image:hover {
+    transform: translateY(+40%) scale(1.1); /* Keeps the same vertical position and scales the image up when hovered */
 }
 
 .course-wrapper {
@@ -96,13 +130,35 @@ link.reg-button {
 
 .appeal-button {
     /* padding: 10px 20px; */
-    margin: 10pt 0;
+    margin-top: 10pt;
 }
 
 .appeal-button:disabled {
     opacity: 50%;
     cursor: not-allowed;
     /* pointer-events: none; */
+}
+
+.favorite-button {
+    color: var(--white-smoke);
+    background-color: rgb(210, 155, 17);
+    border-radius: 45px;
+    padding: 15px 30px;
+    border: none;
+    font-size: 12pt;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 10pt;
+}
+
+.favorite-button:hover {
+    background-color: rgb(230, 177, 43);
+    transition: 0.3s;
+    cursor: pointer;
+}
+
+.favorite-button.clicked {
+    background-color: rgb(152, 152, 152); /* Change to the color you want */
 }
 
 .back-button {

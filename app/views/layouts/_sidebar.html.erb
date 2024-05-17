@@ -12,10 +12,15 @@
     <span><a href="" class="sidebar-link sidebar-inactive">My Favorites</a></span>
     <span><%= link_to "Registration Helper", reghelper_path, class: "sidebar-link #{'active' if active == 'reg_helper'}"%></span>
     <span><%= link_to "Website Masterlist", masterlist_path, class: "sidebar-link #{'active' if active == 'masterlist'}"%></span>
-    <span><a href="" class="sidebar-link sidebar-inactive">User Preferences</a></span>
-    <!-- <span><%= link_to "Edit Profile [DEPT]", dept_profile_path, class: "sidebar-link #{'active' if active == 'profile_dept'}"%></span> -->
-    <%= link_to "Edit Profile [DEPT]", Department.find_by(code: "DCS"), class: "sidebar-link #{'active' if active == 'profile_dept'}" %>
-
+    <% if session[:code].present? %>
+      <%= link_to "User Preferences", request.original_url, class: "sidebar-link sidebar-inactive"%>
+      <%= link_to "Edit Profile [DEPT]", Department.find_by(code: session[:code]), class: "sidebar-link #{'active' if active == 'profile_dept'}" %>
+    <% else %>
+      <%= link_to "User Preferences", userpreferences_path, class: "sidebar-link #{'active' if active == 'userpreferences'}" %>
+      <%= link_to "Edit Profile [DEPT]", request.original_url, class: "sidebar-link sidebar-inactive" %>
+    <% end %>
+    
+    
 
     <span><%= button_to "Logout", logout_path, class: "sidebar-link"%></span>
   </div>

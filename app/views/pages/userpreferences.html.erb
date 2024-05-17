@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <%= render partial: "layouts/sidebar", locals: { active: 'userpreferences' } %>
+        <div class="content center-content">
+        <h3 class="masterlist-title">Profile Settings</h2>
+        <hr class=content-divider>
+            <div id="profile-settings">
+                <div class="input-group">
+                    <label for="username">Username:</label>
+                    <% if session[:type] == "student" %>
+                    <input type="text" id="username" value="<%= @user.username %>" disabled>
+                    <% end %>
+                    <% if session[:type] == "department" %>
+                    <input type="text" id="username" value="<%= @department.name %>" disabled>
+                     <% end %>
+                </div> 
+                <div class="input-group">
+                    <label for="email">Email:</label>
+                    <input type="text" id="email" value="<%= session[:data]["email"]%>" disabled>
+                </div>
+                <button id="edit-button">Edit</button>
+            </div>
+
+        <h3 class="masterlist-title">Change Password</h2>
+        <hr class=content-divider>
+
+            <div id="password-settings">
+                <div class="input-group">
+                    <label for="old-password">Old Password:</label>
+                    <%= password_field_tag :old_password, nil, id: "old-password", disabled: true, class: "password_input"  %>
+                </div>
+
+                <div class="input-group">
+                    <label for="new-password">New Password:</label>
+                    <%= password_field_tag :new_password, nil, id: "new-password", disabled: true, class: "password_input" %>
+                </div>
+
+                <div class="input-group">
+                    <label for="retype-password">Re-type Password:</label>
+                    <%= password_field_tag :retype_password, nil, id: "retype-password", disabled: true, class: "password_input"  %>
+                </div>
+
+                <button id="edit-password-button">Edit</button>
+            </div>
+
+        <h3 class="masterlist-title">Notification Settings</h2>
+        <hr class=content-divider>
+
+        <div id="notification-settings">
+            <div class="input-group">
+                <%= check_box_tag 'turn_on_notifications', 'yes', false, id: 'turn-on-notifications' %>
+                <label for="turn-on-notifications">Turn On Notifications</label>
+            </div>
+
+            <div class="input-group">
+                <%= check_box_tag 'option_1', 'yes', false, id: 'option-1', disabled: true %>
+                <label for="option-1">Send email per notifications</label>
+            </div>
+
+            <div class="input-group">
+                <%= check_box_tag 'option_2', 'yes', false, id: 'option-2', disabled: true %>
+                <label for="option-2">Send email at the end of the day </b> (collates all notifications within that day and sends them all at 10pm)</label>
+            </div>
+
+            <div class="input-group">
+                <%= check_box_tag 'option_3', 'yes', false, id: 'option-3', disabled: true %>
+                <label for="option-3">Send email at the end of the week </b> (collates all notifications within the week starting from Monday and sends them all at Sunday 10pm) </label>
+            </div>
+
+        </div>
+
+            <script>
+                var editButton = document.getElementById('edit-button');
+                var usernameInput = document.getElementById('username');
+                var emailInput = document.getElementById('email');
+
+                editButton.addEventListener('click', function() {
+                    if (editButton.textContent === 'Edit') {
+                        // Make the inputs editable
+                        usernameInput.disabled = false;
+                        emailInput.disabled = false;
+
+                        // Change the button text to 'Save'
+                        editButton.textContent = 'Save';
+                    } else {
+                        // Save the changes
+                        // You need to replace this with your actual save code
+                        console.log('Saving changes...');
+
+                        // Make the inputs uneditable
+                        usernameInput.disabled = true;
+                        emailInput.disabled = true;
+
+                        // Change the button text back to 'Edit'
+                        editButton.textContent = 'Edit';
+                    }
+                });
+            </script>
+
+            <script>
+                var editPasswordButton = document.getElementById('edit-password-button');
+                var oldPasswordInput = document.getElementById('old-password');
+                var newPasswordInput = document.getElementById('new-password');
+                var retypePasswordInput = document.getElementById('retype-password');
+
+                editPasswordButton.addEventListener('click', function() {
+                    if (editPasswordButton.textContent === 'Edit') {
+                    oldPasswordInput.disabled = false;
+                    newPasswordInput.disabled = false;
+                    retypePasswordInput.disabled = false;
+                    editPasswordButton.textContent = 'Save';
+                    } else {
+                    oldPasswordInput.disabled = true;
+                    newPasswordInput.disabled = true;
+                    retypePasswordInput.disabled = true;
+                    oldPasswordInput.value = '';
+                    newPasswordInput.value = '';
+                    retypePasswordInput.value = '';
+
+                    editPasswordButton.textContent = 'Edit';
+                    }
+                });
+            </script>
+
+            <script>
+                var turnOnNotificationsCheckbox = document.getElementById('turn-on-notifications');
+                var option1Checkbox = document.getElementById('option-1');
+                var option2Checkbox = document.getElementById('option-2');
+                var option3Checkbox = document.getElementById('option-3');
+                var saveButton = document.getElementById('save-button');
+
+                turnOnNotificationsCheckbox.addEventListener('change', function() {
+                    var isChecked = turnOnNotificationsCheckbox.checked;
+                    option1Checkbox.disabled = !isChecked;
+                    option2Checkbox.disabled = !isChecked;
+                    option3Checkbox.disabled = !isChecked;
+                });
+
+                saveButton.addEventListener('click', function() {
+                // Save the state of the checkboxes
+                // You need to replace this with your actual save code
+                console.log('Saving changes...');
+
+                // Enable the checkboxes for editing
+                option1Checkbox.disabled = false;
+                option2Checkbox.disabled = false;
+                option3Checkbox.disabled = false;
+                });
+            </script>
+        
+        </div>
+    </body>
+</html>
+

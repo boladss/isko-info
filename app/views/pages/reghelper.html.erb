@@ -4,14 +4,12 @@
     <%= render partial: "layouts/sidebar", locals: { active: 'reg_helper' } %>
     <div class="content center-content">
       <input class="text-input" id="search-bar" type="text" placeholder="Search (e.g., Computer Science)">
-      
-      <a href="/cal">
-          <button class="reg-button">College of Arts and Letters</button>
-      </a>
 
-      <a href="/coe">
-          <button class="reg-button">College of Engineering</button>
+      <% @university_colleges.each do |university_college| %>
+      <a href="<%= university_college_path(university_college) %>">
+        <button class="reg-button"><%= university_college.name %></button>
       </a>
+      <% end %>
       
     </div>
 

@@ -5,7 +5,7 @@
     <div class="content left-content">
 
         <h3 class="title title-profile">Information</h3>
-        <%=  form_with model: @course_policy, url: course_policies_path(params[:id]) do |form| %>
+        <%=  form_with model: @course_policy do |form| %>
           <% if form.object.errors.any? %>
             <div>
               <% form.object.errors.full_messages.each do |message|%>
@@ -41,7 +41,7 @@
         <%= form.button class:"login-button"%>
         <% end %>
         <br/>
-        <%= link_to "Discard changes", all_course_policies_path, class: "signup" %>
+        <%= link_to "Discard changes", @course_policy, class: "signup" %>
     </div>
 
     <script>

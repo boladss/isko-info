@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <body>  
+    <%= render partial: "layouts/sidebar", locals: { active: 'reg_helper' } %>
+    
+    <div class="content">
+      <span><%= link_to "Go back", reghelper_path, class: "sidebar-link back-button"%></span>
+      <input class="text-input" id="search-bar" type="text" placeholder="<%= @university_college.name %>">
+    </div>
+    
+    <div class="content center-content">
+      <div class="colldept-container">
+        <% @departments.each do |department| %>
+        <%= image_tag "favestar0.png", class: "right-image2", style: "border: none;", onclick: "toggleImage(this)" %>
+        <a href="<%= department_reghelper_path(department) %>">
+          <button class="reg-button"><%= department.name %></button>
+        </a>
+        <% end %>
+      </div>
+    </div>
+
+    <script>
+          function toggleImage(image) {
+            if (image.src.match('favestar0')) {
+              image.src = '/assets/favestar1.png'; // Change to the path of favestar1.png
+            } else {
+              image.src = '/assets/favestar0.png'; // Change to the path of favestar0.png
+            }
+          }
+    </script>
+
+  </body>
+</html>
+

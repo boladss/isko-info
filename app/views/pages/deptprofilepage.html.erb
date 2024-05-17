@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+    <body>
+        <div class="page-wrapper" id="profile" uid="<%= session[:user_id] %>" username="<%= session[:username] %>" email="<%=session[:email]%>">
+            <div class="center-wrapper">
+                <h2 class="title">Welcome to IskoInfo!</h2>
+                <p><b>Current User:</b> <%=  session[:email]%></p>
+                <div class="button-wrapper-1">
+                    <%= link_to "Home", home_path, class:"login-button"%>
+                    <%= button_to "Log out", logout_path, class:"login-button"%>
+                </div>
+            </div>
+        </div>
+
+        <p id="demo"></p>
+    </body>
+</html>
+

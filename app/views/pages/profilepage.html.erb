@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <body>
-        <div class="page-wrapper" id="profile" uid="<%= session[:user_id] %>" username="<%= session[:username] %>" email="<%=session[:email]%>">
+        <div class="page-wrapper" id="profile" uid="<%= session[:firebase_id] %>" username="<%= session[:username] %>" email="<%=session[:email]%>">
             <div class="center-wrapper">
                 <h2 class="title">Welcome to IskoInfo!</h2>
                 <p><b>Current User:</b> <%=  session[:email]%></p>

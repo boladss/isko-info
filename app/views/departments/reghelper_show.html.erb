@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <body>
+    <%= render partial: "layouts/sidebar", locals: { active: 'reg_helper' } %>
+    <div class="content">
+      <span><%= link_to "Go back", university_college_path(@university_college), class: "sidebar-link back-button"%></span>
+      <input class="text-input" id="search-bar" type="text" placeholder="<%= @department.name %>">
+    </div>
+
+    <div class="content center-content">
+      <div class="course-wrapper">
+        <div class="course-container">
+          <% @course_policies.each do |course_policy| %>
+            <%= image_tag "favestar0.png", class: "right-image", style: "border: none;", onclick: "toggleImage(this)" %>
+            <a href="<%= course_policy_reghelper_path(course_policy) %>">               
+                <button class="reg-button course-button">
+                <div><%= course_policy.course_title %></div>
+                <div class="subtext"><%= course_policy.course_description %></div>
+                </button>
+            </a>
+          <% end %>
+        </div>
+
+        <div class="fb-post">
+          <iframe   iframe src="https://www.facebook.com/plugins/post.php?href=https%3A%2F%2Fwww.facebook.com%2Fupddcs%2Fposts%2F847309173862672&show_text=true&width=500" width="500" height="645" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+        </div>
+
+        <script>
+          function toggleImage(image) {
+            if (image.src.match('favestar0')) {
+              image.src = '/assets/favestar1.png'; // Change to the path of favestar1.png
+            } else {
+              image.src = '/assets/favestar0.png'; // Change to the path of favestar0.png
+            }
+          }
+        </script>
+      </div>
+    </div>
+  </body>
+</html>
+

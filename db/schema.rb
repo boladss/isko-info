@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_05_02_142649) do
+ActiveRecord::Schema[7.1].define(version: 2024_05_16_140836) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -49,6 +49,15 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_142649) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "appeals", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "course_policy_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["course_policy_id"], name: "index_appeals_on_course_policy_id"
+    t.index ["user_id"], name: "index_appeals_on_user_id"
+  end
+
   create_table "colleges", force: :cascade do |t|
     t.string "code"
     t.text "name"
@@ -61,6 +70,11 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_142649) do
     t.text "course_description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "code"
+    t.integer "department_id"
+    t.integer "remaining_slots"
+    t.integer "total_slots"
+    t.index ["department_id"], name: "index_course_policies_on_department_id"
   end
 
   create_table "departments", force: :cascade do |t|
@@ -68,13 +82,29 @@ ActiveRecord::Schema[7.1].define(version: 2024_05_02_142649) do
     t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "university_college_id"
+    t.index ["university_college_id"], name: "index_departments_on_university_college_id"
   end
 
-  create_table "messages", force: :cascade do |t|
+  create_table "university_colleges", force: :cascade do |t|
+    t.string "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "users", force: :cascade do |t|
+    t.string "username"
+    t.string "user_type"
+    t.string "course_code"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "firebase_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "appeals", "course_policies"
+  add_foreign_key "appeals", "users"
+  add_foreign_key "course_policies", "departments"
+  add_foreign_key "departments", "university_colleges"
 end
